@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/17 03:56:36 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/17 04:15:07 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	main(int argc, char	**argv)
 {
-	write(1, "Hello So Long", 13);
+	if (argc > 1)
+	{
+		write(1, argv[1], 4);
+		write(1, "\n", 2);
+	}
 	return (0);
 }
