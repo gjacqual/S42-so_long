@@ -6,7 +6,14 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/17 02:24:44 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/17 03:56:36 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+
+int	main(int argc, char	**argv)
+{
+	write(1, "Hello So Long", 13);
+	return (0);
+}
