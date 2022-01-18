@@ -9,7 +9,7 @@ LIBFT_LIB	:= ${LIBFT_DIR}/libft.a
 
 MLX_DIR		:= mlx-linux
 MLX_LIB		:= ${MLX_DIR}/libmlx.a
-MLXFLAGS 	:= -I ${MLX_DIR} -L ${MLX_DIR} -lmlx -lXext -lX11
+MLXFLAGS 	:= -I ${MLX_DIR} -L ${MLX_DIR} -Lmlx -lmlx -lXext -lX11
  
 SRCS_DIRS	=	./srcs/
 
@@ -18,7 +18,10 @@ vpath %.c ${SRCS_DIRS}
 INC_DIR := ./includes
 INC		:= includes/so_long.h
 
-SRCS	=	./srcs/so_long.c
+SRCS	=	./srcs/so_long.c\
+			./srcs/errors.c\
+			./srcs/checkers.c\
+			./srcs/init.c
 			
 
 OBJS_DIR 	=	./objs
@@ -32,7 +35,7 @@ ${MLX_LIB}:
 	@make -C ./${MLX_DIR}
 
 ${NAME}: ${OBJS} ${LIBFT_LIB} ${MLX_LIB} ${INC} Makefile
-	@ ${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} -I ${INC_DIR}
+	@ ${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} ${MLX_LIB} -I ${INC_DIR}
 	@echo "So_Long App is ready"	
 
 ${OBJS_DIR}:

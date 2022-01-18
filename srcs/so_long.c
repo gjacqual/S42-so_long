@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/17 04:15:07 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/18 00:38:38 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int	main(int argc, char	**argv)
 {
-	if (argc > 1)
+	if (argc != 2)
 	{
-		write(1, argv[1], 4);
-		write(1, "\n", 2);
+		error("Enter the map file path (ex: maps/map.ber) after");
 	}
-	return (0);
+	else if (check_map_path(argv[1]))
+	{
+		printf("%s\n", argv[1]);
+		xwindow_init();
+	}
+	else
+		return (0);
 }
