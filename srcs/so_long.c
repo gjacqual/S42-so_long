@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/18 00:38:38 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:51:42 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	main(int argc, char	**argv)
 	}
 	else if (check_map_path(argv[1]))
 	{
-		printf("%s\n", argv[1]);
-		xwindow_init();
+		xwindow_init(argv[1]);
 	}
 	else
 		return (0);

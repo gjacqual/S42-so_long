@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/18 16:22:09 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:53:44 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include "../libft/libft.h"
 # include "../mlx-linux/mlx.h"
 
-typedef struct s_vars {
+typedef struct s_game {
 	void	*mlx;
 	void	*mlx_win;
-}				t_vars;
+}				t_game;
 
 typedef struct s_image {
 	void	*grass;
@@ -45,6 +45,6 @@ typedef struct s_data {
 
 void	error(char *message);
 int		check_map_path(char *str);
-void	xwindow_init(void);
+void	xwindow_init(char *path);
 
 #endif
