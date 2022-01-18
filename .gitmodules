@@ -1,3 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = git@github.com:gjacqual/libft.git
+[submodule "srcs/get_next_line"]
+	path = srcs/get_next_line
+	url = git@github.com:gjacqual/get_next_line.git
