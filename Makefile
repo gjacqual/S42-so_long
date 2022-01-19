@@ -1,7 +1,7 @@
 NAME		:=	so_long
 
 CC :=  clang
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -g
 RM	= rm -f
 
 LIBFT_DIR	:= libft
@@ -11,7 +11,8 @@ MLX_DIR		:= mlx-linux
 MLX_LIB		:= ${MLX_DIR}/libmlx.a
 MLXFLAGS 	:= -I ${MLX_DIR} -L ${MLX_DIR} -Lmlx -lmlx -lXext -lX11
  
-SRCS_DIRS	=	./srcs/
+SRCS_DIRS	=	./srcs/\
+				./srcs/get_next_line/
 
 vpath %.c ${SRCS_DIRS}
 
@@ -21,7 +22,10 @@ INC		:= includes/so_long.h
 SRCS	=	./srcs/so_long.c\
 			./srcs/errors.c\
 			./srcs/checkers.c\
-			./srcs/init.c
+			./srcs/init.c\
+			./srcs/utils.c\
+			./srcs/get_next_line/get_next_line.c\
+			./srcs/get_next_line/get_next_line_utils.c
 			
 
 OBJS_DIR 	=	./objs
