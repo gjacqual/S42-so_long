@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/19 01:05:17 by gjacqual         ###   ########.fr       */
+/*   Created: 2022/01/18 20:47:00 by gjacqual          #+#    #+#             */
+/*   Updated: 2022/01/18 20:52:13 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char	**argv)
+int	close_window()
 {
-	t_game	game;
-	
-	if (argc != 2)
-		error("Enter the map file path (ex: maps/map.ber) after");
-	else if (check_map_path(argv[1]))
-	{
-		game_start(&game, argv[1]);
-		return (0);
-	}
-	else
-		return (0);
+	// free(game->map);
+	exit(1);
 }
