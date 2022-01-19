@@ -1,0 +1,47 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(lldb) Запустить",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["5", "9", "8"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [ { "name": "squid", "value": "clam" } ],
+			"externalConsole": true,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "(lldb) Подключить",
+			"type": "cppdbg",
+			"request": "attach",
+			"program": "${workspaceFolder}/push_swap",
+			"processId": "${command:pickProcess}",
+			"MIMode": "lldb"
+		},
+		{
+			"name": "(gdb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/so_long",
+			"args": ["${workspaceFolder}/maps/map_76x6.ber"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		}
+	]
+}
