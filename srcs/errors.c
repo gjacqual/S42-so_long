@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:34:26 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/20 03:24:28 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:37:01 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ void	system_error(char *message)
 	perror(message);
 	exit(EXIT_FAILURE);
 }
-
