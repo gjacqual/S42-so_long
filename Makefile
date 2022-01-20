@@ -18,6 +18,7 @@ vpath %.c ${SRCS_DIRS}
 
 INC_DIR := ./includes
 INC		:= includes/so_long.h
+GNL_INC	:= ./srcs/get_next_line/get_next_line.h
 
 SRCS	=	./srcs/so_long.c\
 			./srcs/errors.c\
@@ -38,7 +39,7 @@ ${LIBFT_LIB}:
 ${MLX_LIB}: 
 	@make -C ./${MLX_DIR}
 
-${NAME}: ${OBJS} ${LIBFT_LIB} ${MLX_LIB} ${INC} Makefile
+${NAME}: ${OBJS} ${LIBFT_LIB} ${MLX_LIB} ${INC} ${GNL_INC} Makefile
 	@ ${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} ${MLX_LIB} -I ${INC_DIR}
 	@echo "So_Long App is ready"	
 

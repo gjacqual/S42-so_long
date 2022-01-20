@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/20 18:54:52 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 01:01:35 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static	void	find_map_size(char *path, t_game *game)
 			map_height++;
 	}
 	game->map_height = map_height;
+
+	printf("Высота карты: %i\n", game->map_height);
 	close(fd);
 }
 
@@ -83,11 +85,21 @@ int	read_map(char *path, t_game *game)
 		system_error("Opening the file failed");
 	i = 0;
 	tmp_line = get_next_line(fd);
-	game->map[i] = tmp_line;
+	// if (tmp_line[0] == '\n')
+	// 	i++;
+	// else
+		game->map[i] = tmp_line;
+	printf("Вот строка: %s\n",  tmp_line);
 	while (tmp_line != NULL)
 	{	
 		tmp_line = get_next_line(fd);
-		game->map[++i] = tmp_line;
+		// if (tmp_line != NULL &&  tmp_line[0] == '\n')
+		// 	i++;
+		// else if (tmp_line != NULL)
+		// {
+			game->map[++i] = tmp_line;
+			printf("Вот строка: %s\n",  tmp_line);
+		// }
 	}
 	free(tmp_line);
 	game->map[i] = NULL;
@@ -116,10 +128,9 @@ void	game_start(t_game	*game, char *path)
 	init_game_vars(game);
 	if (read_map(path, game))
 	{
-		chech_map_conditions(game);
+		check_map_conditions(game);
 		
 		// Проверка валидности карты ( 
-			// Разная длинна линий, - проверка на прямоугольник
 			// неверные символы, 
 		// не окружена полностью препятствиями, 
 		// нет всех нужных символов )
@@ -142,6 +153,10 @@ void	game_start(t_game	*game, char *path)
 	while(game->map[j])
 	{
 		printf("%i - строка: %s\n", j, game->map[j]);
+		if (ft_strrchr(game->map[j], '\n'))
+		{
+			printf("---> Тут есть символ переноса\n");
+		}
 		j++;
 	}
 	// end - test

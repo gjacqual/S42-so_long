@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/20 03:46:25 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 01:18:57 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "../srcs/get_next_line/get_next_line.h"
 # include "../mlx-linux/mlx.h"
 
+/* Images paths */
 # define IMGPATH "./images/"
 # define GRASS "grass.xpm"
 # define ROCK "rock.xpm"
@@ -32,13 +33,24 @@
 # define ENEMY "skelet.xpm"
 # define COUNTER_COLOR 0xFFFFFF
 
+/* Valid map symbols */
+# define EMPTY_EL '0'
+# define WALL_EL '1'
+# define COIN_EL 'C'
+# define EXIT_EL 'E'
+# define PLAYER_EL 'P'
+
+
+/* Game structure */
 typedef struct s_game {
 	void	*mlx;
 	void	*mlx_win;
 	int 	map_height;
+	int		map_width;
 	char 	**map;
 }				t_game;
 
+/* Images */
 typedef struct s_image {
 	void	*grass;
 	void	*rock;
@@ -50,19 +62,28 @@ typedef struct s_image {
 	int		img_height;
 }			t_image;
 
+/* map elements */
 typedef struct s_data {
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	int empty_el;
+	int wall_el;
+	int coin_el;
+	int player;
+	int exit; 
 }				t_data;
 
+/* Initialization */
 void 	init_game_vars(t_game	*game);
-void	game_error(char *message);
-void	system_error(char *message);
-int		check_map_path(char *str);
 void	xwindow_init(t_game	*game);
 void 	game_start(t_game *game, char *path);
-int		close_window();
+
+/* Errors */
+void	game_error(char *message);
+void	system_error(char *message);
+void	game_free_and_error(char *message, t_game *game);
+
+/* Verifiers */
+int		check_map_path(char *str);
+void	check_map_conditions(t_game *game);
+int		close_window(void);
 
 #endif

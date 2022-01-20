@@ -29,7 +29,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/so_long",
-			"args": ["${workspaceFolder}/maps/map_76x6.ber"],
+			"args": ["${workspaceFolder}/maps/map_3x9.ber"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
