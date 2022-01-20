@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/19 03:48:31 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:46:25 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ typedef struct s_data {
 	int		endian;
 }				t_data;
 
-void	error(char *message);
+void 	init_game_vars(t_game	*game);
+void	game_error(char *message);
+void	system_error(char *message);
 int		check_map_path(char *str);
 void	xwindow_init(t_game	*game);
 void 	game_start(t_game *game, char *path);

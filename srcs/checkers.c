@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/17 23:44:32 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/20 02:20:47 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	check_map_path(char *str)
 {
 	if (!ft_strrchr(str, '.'))
 	{
-		error("Invalid file name, missing extension");
+		game_error("Invalid file name, missing extension");
 	}
 	else if (!check_ext_ber(str))
 	{
-		error("Unsupported file type. Please, use only .ber extension.");
+		game_error("Unsupported file type. Please, use only .ber extension.");
 	}
 	return (1);
 }
