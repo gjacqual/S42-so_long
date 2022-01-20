@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/20 05:45:51 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:54:52 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	read_map(char *path, t_game *game)
 
 	find_map_size(path, game);
 	tmp_line = NULL;
+	game->map = NULL;
 	game->map = malloc(sizeof(char *) * game->map_height + 1);
 	if (game->map == NULL)
 		system_error("No memory allocated");
@@ -106,7 +107,6 @@ void	xwindow_init(t_game	*game)
 
 void	init_game_vars(t_game	*game)
 {
-	game->map = NULL;
 	game->map_height = 0;
 }
 
@@ -116,6 +116,8 @@ void	game_start(t_game	*game, char *path)
 	init_game_vars(game);
 	if (read_map(path, game))
 	{
+		chech_map_conditions(game);
+		
 		// Проверка валидности карты ( 
 			// Разная длинна линий, - проверка на прямоугольник
 			// неверные символы, 
@@ -133,16 +135,16 @@ void	game_start(t_game	*game, char *path)
 		
 	}
 
-
+	// test 
 	printf("-------\n");
-	printf("1 строка: %s\n", game->map[0]);
-	printf("2 строка: %s\n", game->map[1]);
-	printf("3 строка: %s\n", game->map[2]);
-	printf("4 строка: %s\n", game->map[3]);
-	printf("5 строка: %s\n", game->map[4]);
-	// printf("6 строка: %s\n", game->map[5]);
-	// printf("7 строка пустая: %s\n", game->map[6]);
-	// printf("8 строка пустая: %s\n", game->map[7]);
+	int j;
+	j = 0;
+	while(game->map[j])
+	{
+		printf("%i - строка: %s\n", j, game->map[j]);
+		j++;
+	}
+	// end - test
 	
 	mlx_string_put(game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
 	mlx_hook(game->mlx_win, 17, 0, close_window, &game);

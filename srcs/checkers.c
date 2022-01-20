@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/20 02:20:47 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/20 19:00:51 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ static int	check_ext_ber(char *str)
 		str_length--;
 	}	
 	return (1);
+}
+
+void	chech_map_conditions(t_game game)
+{
+	if (!check_map_rect(game))
+		game_error("The map has an irregular shape. It must be rectangular");
 }
 
 int	check_map_path(char *str)
