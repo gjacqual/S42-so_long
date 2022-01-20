@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 01:17:28 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 01:31:39 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int check_map_symbols(game)
 {
 	t_data elements;
 	int tmp_height;
+	int tmp_width;
+	
 	
 	tmp_height = game->map_height - 1;
 	elements.empty_el = 0;
@@ -45,8 +47,14 @@ static int check_map_symbols(game)
 	
 	while (tmp_height >= 0)
 	{
-		
-		
+		tmp_width = 0;
+		while (game->map[tmp_height][tmp_width])
+		{
+			if (game->map[tmp_height][tmp_width] == EMPTY_EL)
+
+
+			
+		}
 		tmp_height--;
 	}
 	 
