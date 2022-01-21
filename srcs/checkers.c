@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 06:01:33 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:25:21 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ static void	check_wall_closed(t_game *game)
 			"The map must be closed. Check the veritcal walls", game);
 }
 
-static void	check_necessary_el(t_data *elements, t_game *game)
+static void	check_necessary_el(t_game *game)
 {
-	if (elements->exit == 0)
+	if (game->elements.exit == 0)
 		game_free_and_error("Map must contain at least one exit", game);
-	if (elements->coin_el == 0)
+	if (game->elements.coin_el == 0)
 		game_free_and_error("Map must contain at least one collectible", game);
-	if (elements->player == 0)
+	if (game->elements.player == 0)
 		game_free_and_error("Map must contain one starting position", game);
-	else if (elements->player > 1)
+	else if (game->elements.player > 1)
 		game_free_and_error(
 			"Map must contain only one starting position", game);
 }
@@ -92,16 +92,15 @@ static void	check_necessary_el(t_data *elements, t_game *game)
 
 static void check_map_symbols(t_game *game)
 {
-	t_data	elements;
 	int		tmp_height;
 	int		tmp_width;
 
 	tmp_height = game->map_height - 1;
-	elements.empty_el = 0;
-	elements.wall_el = 0;
-	elements.coin_el = 0;
-	elements.player = 0;
-	elements.exit = 0;
+	game->elements.empty_el = 0;
+	game->elements.wall_el = 0;
+	game->elements.coin_el = 0;
+	game->elements.player = 0;
+	game->elements.exit = 0;
 
 	while (tmp_height >= 0)
 	{
@@ -109,22 +108,29 @@ static void check_map_symbols(t_game *game)
 		while (game->map[tmp_height][tmp_width])
 		{
 			if (game->map[tmp_height][tmp_width] == EMPTY_EL)
-				elements.empty_el++;
+				game->elements.empty_el++;
 			else if (game->map[tmp_height][tmp_width] == WALL_EL)
-				elements.wall_el++;
+				game->elements.wall_el++;
 			else if (game->map[tmp_height][tmp_width] == COIN_EL)
-				elements.coin_el++;
+				game->elements.coin_el++;
 			else if (game->map[tmp_height][tmp_width] == PLAYER_EL)
-				elements.player++;
+			{
+				game->elements.player++;
+				if (game->player_x_pos == 0 || game->player_y_pos == 0)
+				{
+					game->player_x_pos = tmp_width;
+					game->player_y_pos = tmp_height;
+				}
+			}	
 			else if (game->map[tmp_height][tmp_width] == EXIT_EL)
-				elements.exit++;
+				game->elements.exit++;
 			else if (game->map[tmp_height][tmp_width] != '\n')
 				game_free_and_error("Invalid element found in the map", game);
 			tmp_width++;
 		}
 		tmp_height--;
 	}
-	check_necessary_el(&elements, game);
+	check_necessary_el(game);
 	check_wall_closed(game);
 }
 
