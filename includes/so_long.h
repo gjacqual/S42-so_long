@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 01:18:57 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 05:44:56 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define COLLECT "blue_orb.xpm"
 # define PLAYER "player.xpm"
 # define ENEMY "skelet.xpm"
+# define IMGSIZE 32
+
 # define COUNTER_COLOR 0xFFFFFF
 
 /* Valid map symbols */
@@ -41,14 +43,14 @@
 # define PLAYER_EL 'P'
 
 
-/* Game structure */
-typedef struct s_game {
-	void	*mlx;
-	void	*mlx_win;
-	int 	map_height;
-	int		map_width;
-	char 	**map;
-}				t_game;
+/* map elements */
+typedef struct s_data {
+	int empty_el;
+	int wall_el;
+	int coin_el;
+	int player;
+	int exit; 
+}				t_data;
 
 /* Images */
 typedef struct s_image {
@@ -62,14 +64,18 @@ typedef struct s_image {
 	int		img_height;
 }			t_image;
 
-/* map elements */
-typedef struct s_data {
-	int empty_el;
-	int wall_el;
-	int coin_el;
-	int player;
-	int exit; 
-}				t_data;
+/* Game structure */
+typedef struct s_game {
+	void	*mlx;
+	void	*mlx_win;
+	int 	map_height;
+	int		map_width;
+	char 	**map;
+	int		moves;
+	int		collect;
+	t_image img;
+}				t_game;
+
 
 /* Initialization */
 void 	init_game_vars(t_game	*game);

@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 01:01:35 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 06:01:07 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,20 @@
 /* Upload all images to the game */
 void	load_images(t_game	*game)
 {
-	t_image	img;
 
-	img.grass = mlx_xpm_file_to_image(
-			game->mlx, IMGPATH GRASS, &img.img_width, &img.img_height);
-	img.rock = mlx_xpm_file_to_image(
-			game->mlx, IMGPATH ROCK, &img.img_width, &img.img_height);
-	img.exit = mlx_xpm_file_to_image(
-			game->mlx, IMGPATH EXIT, &img.img_width, &img.img_height);
-	img.orb = mlx_xpm_file_to_image(
-			game->mlx, IMGPATH COLLECT, &img.img_width, &img.img_height);
-	img.player = mlx_xpm_file_to_image(
-			game->mlx, IMGPATH PLAYER, &img.img_width, &img.img_height);
-	img.enemy = mlx_xpm_file_to_image(
-			game->mlx, IMGPATH ENEMY, &img.img_width, &img.img_height);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.grass, 30, 0);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.rock, 50, 50);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.exit, 100, 100);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.orb, 150, 150);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.player, 200, 200);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, img.enemy, 250, 250);
+	game->img.grass = mlx_xpm_file_to_image(
+			game->mlx, IMGPATH GRASS, &game->img.img_width, &game->img.img_height);
+	game->img.rock = mlx_xpm_file_to_image(
+			game->mlx, IMGPATH ROCK, &game->img.img_width, &game->img.img_height);
+	game->img.exit = mlx_xpm_file_to_image(
+			game->mlx, IMGPATH EXIT, &game->img.img_width, &game->img.img_height);
+	game->img.orb = mlx_xpm_file_to_image(
+			game->mlx, IMGPATH COLLECT, &game->img.img_width, &game->img.img_height);
+	game->img.player = mlx_xpm_file_to_image(
+			game->mlx, IMGPATH PLAYER, &game->img.img_width, &game->img.img_height);
+	game->img.enemy = mlx_xpm_file_to_image(
+			game->mlx, IMGPATH ENEMY, &game->img.img_width, &game->img.img_height);
 }
-
 static	void	find_map_size(char *path, t_game *game)
 {
 	int		fd;
@@ -62,8 +54,6 @@ static	void	find_map_size(char *path, t_game *game)
 			map_height++;
 	}
 	game->map_height = map_height;
-
-	printf("Высота карты: %i\n", game->map_height);
 	close(fd);
 }
 
@@ -85,21 +75,11 @@ int	read_map(char *path, t_game *game)
 		system_error("Opening the file failed");
 	i = 0;
 	tmp_line = get_next_line(fd);
-	// if (tmp_line[0] == '\n')
-	// 	i++;
-	// else
 		game->map[i] = tmp_line;
-	printf("Вот строка: %s\n",  tmp_line);
 	while (tmp_line != NULL)
 	{	
 		tmp_line = get_next_line(fd);
-		// if (tmp_line != NULL &&  tmp_line[0] == '\n')
-		// 	i++;
-		// else if (tmp_line != NULL)
-		// {
-			game->map[++i] = tmp_line;
-			printf("Вот строка: %s\n",  tmp_line);
-		// }
+		game->map[++i] = tmp_line;
 	}
 	free(tmp_line);
 	game->map[i] = NULL;
@@ -114,54 +94,49 @@ void	xwindow_init(t_game	*game)
 	if (game->mlx == NULL)
 		game_error("Window initialization failed");
 	game->mlx_win = mlx_new_window(\
-	game->mlx, 800, 600, "So_long - Gjacqual 2D Game");
+	game->mlx, IMGSIZE * game->map_width, IMGSIZE * game->map_height, "SO_LONG");
 }
 
 void	init_game_vars(t_game	*game)
 {
 	game->map_height = 0;
+	game->map_width = 0;
+	game->moves = 0;
 }
 
+void draw_frame(t_game	*game)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.grass, 30, 0);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.rock, 50, 50);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.exit, 100, 100);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.orb, 150, 150);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.player, 200, 200);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.enemy, 250, 250);
+	mlx_string_put(
+		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
+}
+
+
+
+
 /* The game starts In this function */
-void	game_start(t_game	*game, char *path)
+void	game_start(t_game *game, char *path)
 {
 	init_game_vars(game);
 	if (read_map(path, game))
 	{
 		check_map_conditions(game);
-		
-		// Проверка валидности карты ( 
-			// неверные символы, 
-		// не окружена полностью препятствиями, 
-		// нет всех нужных символов )
-
-		// Инициализация всех параметров (обновить списко init_game_vars(game); )
 		xwindow_init(game);
 		load_images(game);
 
 		// рендеринг карты и добавление на нее картинок
 		//  хуки перехвата событий клавиатуры лево прово верх ни 
-		//  mlx_loop_hook - рендеринг следующего кардра и анимация
-
-		
+		//  mlx_loop_hook - рендеринг следующего кардра и анимация	
+		// не забыть сделать проверки на пустые пространства и переносы строки до начала карты
+		// Не забыть сделать проверку на пересбор либы
+		// Сделать правильный мейк для бонусов с тем же именем, чтобы пересобирался когда нужно++++++++++++++++++++++++++++++++
 	}
-
-	// test 
-	printf("-------\n");
-	int j;
-	j = 0;
-	while(game->map[j])
-	{
-		printf("%i - строка: %s\n", j, game->map[j]);
-		if (ft_strrchr(game->map[j], '\n'))
-		{
-			printf("---> Тут есть символ переноса\n");
-		}
-		j++;
-	}
-	// end - test
-	
-	mlx_string_put(game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
+	draw_frame(game);
 	mlx_hook(game->mlx_win, 17, 0, close_window, &game);
 	mlx_loop(game->mlx);
 }
