@@ -40,14 +40,14 @@ ${MLX_LIB}:
 	@make -C ./${MLX_DIR}
 
 ${NAME}: ${OBJS} ${LIBFT_LIB} ${MLX_LIB} ${INC} ${GNL_INC} Makefile
-	@ ${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} ${MLX_LIB} -I ${INC_DIR}
+	@ ${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} ${MLX_LIB} -I ${INC}
 	@echo "So_Long App is ready"	
 
 ${OBJS_DIR}:
 	@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}/%.o : %.c | ${OBJS_DIR}
-	@${CC} ${CFLAGS} -o $@ -I${INC_DIR} -c $^
+${OBJS_DIR}/%.o : %.c | ${OBJS_DIR} 
+	@${CC} ${CFLAGS} -o $@ -I ${INC_DIR} -c $^
 
 
 clean:

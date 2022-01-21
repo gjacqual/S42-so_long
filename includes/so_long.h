@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 05:44:56 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 19:22:18 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define ENEMY "skelet.xpm"
 # define IMGSIZE 32
 
-# define COUNTER_COLOR 0xFFFFFF
+# define COUNTER_COLOR 0x00FFFF
 
 /* Valid map symbols */
 # define EMPTY_EL '0'

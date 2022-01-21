@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 18:53:53 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 19:40:53 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,13 +139,18 @@ void draw_pict(t_game *game)
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
 }
 
-int	next_pict (t_game *game)
+int	next_pict(t_game *game)
 {
 	// (void) game;
 	 draw_pict(game);
 	return (0);
 }
 
+void hooks(t_game *game)
+{
+	mlx_hook(game->mlx_win, 17, 0, close_window, &game); // Не забыть корректно прописать фукнцию закрытия
+	mlx_loop_hook(game->mlx, &next_pict, game);
+}
 
 /* The game starts In this function */
 void	game_start(t_game *game, char *path)
@@ -163,10 +168,7 @@ void	game_start(t_game *game, char *path)
 		// не забыть сделать проверки на пустые пространства и переносы строки до начала карты
 		// Не забыть сделать проверку на пересбор либы
 		// Сделать правильный мейк для бонусов с тем же именем, чтобы пересобирался когда нужно++++++++++++++++++++++++++++++++
-		
-		draw_pict(game);
-		mlx_hook(game->mlx_win, 17, 0, close_window, &game); // Не забыть корректно прописать фукнцию закрытия
-		mlx_loop_hook(game->mlx, &next_pict, game);
+		hooks(game);
 		mlx_loop(game->mlx);
 	}
 	
