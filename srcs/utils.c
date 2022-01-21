@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:47:00 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/18 20:52:13 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 06:51:14 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	close_window()
 {
-	// free(game->map);
-	exit(1);
+	exit(EXIT_SUCCESS);
 }

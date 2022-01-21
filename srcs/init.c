@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 06:26:56 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 07:16:50 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,12 @@ void symb_to_img(t_game	*game)
 	}
 }
 
-void draw_pict(t_game	*game)
+int draw_pict(t_game *game)
 {
 	symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
+	return (0);
 }
 
 
@@ -153,14 +154,16 @@ void	game_start(t_game *game, char *path)
 		xwindow_init(game);
 		load_images(game);
 
-		// рендеринг карты и добавление на нее картинок
 		//  хуки перехвата событий клавиатуры лево прово верх ни 
 		//  mlx_loop_hook - рендеринг следующего кардра и анимация	
 		// не забыть сделать проверки на пустые пространства и переносы строки до начала карты
 		// Не забыть сделать проверку на пересбор либы
 		// Сделать правильный мейк для бонусов с тем же именем, чтобы пересобирался когда нужно++++++++++++++++++++++++++++++++
+		
+		draw_pict(game);
+		mlx_loop_hook(game->mlx, draw_pict, &game);
+		mlx_hook(game->mlx_win, 17, 0, close_window, &game); // Не забыть корректно прописать фукнцию закрытия
+		mlx_loop(game->mlx);
 	}
-	draw_pict(game);
-	mlx_hook(game->mlx_win, 17, 0, close_window, &game);
-	mlx_loop(game->mlx);
+	
 }
