@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 19:40:53 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:20:42 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ void	init_game_vars(t_game	*game)
 	game->map_height = 0;
 	game->map_width = 0;
 	game->moves = 0;
+	game->collect = 0;
+	game->player_x_pos = 0;
+	game->player_y_pos = 0;
 }
 
 
@@ -137,18 +140,44 @@ void draw_pict(t_game *game)
 	symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
+	printf("Позиция игрока x:%i, y:%i\n", game->player_x_pos, game->player_y_pos);
+	printf("Шагов: %i\n", game->moves);
 }
 
 int	next_pict(t_game *game)
 {
-	// (void) game;
 	 draw_pict(game);
 	return (0);
 }
 
+
+int key_hook(int keycode, t_game *game)
+{
+	int x_pos;
+	int y_pos;
+	
+	x_pos = game->player_x_pos;
+	y_pos = game->player_y_pos;
+	
+
+	if (keycode == ESC)
+		close_window(game);
+	// else if (keycode == UP)
+	// 	step_up(game);
+	// else if (keycode == DOWN)
+	// 	step_left(game);
+	// else if (keycode == LEFT)
+	// 	step_right(game);
+	// else if (keycode == RIGHT)
+	// 	player_step();
+	return (0);
+}
+
+
 void hooks(t_game *game)
 {
-	mlx_hook(game->mlx_win, 17, 0, close_window, &game); // Не забыть корректно прописать фукнцию закрытия
+	mlx_key_hook (game->mlx_win, key_hook, game); //  хуки перехвата событий клавиатуры лево прово верх ни 
+	mlx_hook(game->mlx_win, 17, 0L, close_window, game); // Не забыть корректно прописать фукнцию закрытия
 	mlx_loop_hook(game->mlx, &next_pict, game);
 }
 
@@ -163,7 +192,7 @@ void	game_start(t_game *game, char *path)
 		load_images(game);
 		game->mlx_win = mlx_new_window(game->mlx, IMGSIZE * game->map_width, IMGSIZE * game->map_height, "so_long");
 
-		//  хуки перехвата событий клавиатуры лево прово верх ни 
+		
 		//  mlx_loop_hook - рендеринг следующего кардра и анимация	
 		// не забыть сделать проверки на пустые пространства и переносы строки до начала карты
 		// Не забыть сделать проверку на пересбор либы

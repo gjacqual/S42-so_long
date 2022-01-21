@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 19:22:18 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:09:41 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,20 @@
 # define EXIT_EL 'E'
 # define PLAYER_EL 'P'
 
+/* Key codes*/
+# define ESC 65307
+# define UP 119
+# define DOWN 97
+# define LEFT 115
+# define RIGHT 100
+
+/* Mac Keys */
+# define M_ESC 53
+# define M_UP 13
+# define M_DOWN 1
+# define M_LEFT 0
+# define M_RIGHT 2
+
 
 /* map elements */
 typedef struct s_data {
@@ -73,7 +87,10 @@ typedef struct s_game {
 	char 	**map;
 	int		moves;
 	int		collect;
+	int		player_x_pos;
+	int		player_y_pos;
 	t_image img;
+	t_data	elements;
 }				t_game;
 
 
@@ -90,6 +107,6 @@ void	game_free_and_error(char *message, t_game *game);
 /* Verifiers */
 int		check_map_path(char *str);
 void	check_map_conditions(t_game *game);
-int		close_window(void);
+int		close_window(t_game *game);
 
 #endif
