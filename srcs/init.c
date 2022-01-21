@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 06:01:07 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 06:26:56 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,38 @@ void	init_game_vars(t_game	*game)
 	game->moves = 0;
 }
 
-void draw_frame(t_game	*game)
+
+void symb_to_img(t_game	*game)
 {
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.grass, 30, 0);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.rock, 50, 50);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.exit, 100, 100);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.orb, 150, 150);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.player, 200, 200);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.enemy, 250, 250);
+	int tmp_height;
+	int tmp_width;
+
+	tmp_height = game->map_height - 1;
+	while(tmp_height >= 0)
+	{
+		tmp_width = 0;
+		while (game->map[tmp_height][tmp_width])
+		{
+			if (game->map[tmp_height][tmp_width] == EMPTY_EL)
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.grass, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+			else if (game->map[tmp_height][tmp_width] == WALL_EL)
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.rock, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+			else if (game->map[tmp_height][tmp_width] == COIN_EL)
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.orb, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+			else if (game->map[tmp_height][tmp_width] == PLAYER_EL)
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.player, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+			else if (game->map[tmp_height][tmp_width] == EXIT_EL)
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.exit, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+			tmp_width++;
+		}
+
+		tmp_height--;
+	}
+}
+
+void draw_pict(t_game	*game)
+{
+	symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
 }
@@ -136,7 +160,7 @@ void	game_start(t_game *game, char *path)
 		// Не забыть сделать проверку на пересбор либы
 		// Сделать правильный мейк для бонусов с тем же именем, чтобы пересобирался когда нужно++++++++++++++++++++++++++++++++
 	}
-	draw_frame(game);
+	draw_pict(game);
 	mlx_hook(game->mlx_win, 17, 0, close_window, &game);
 	mlx_loop(game->mlx);
 }
