@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 07:16:50 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 18:16:06 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ void	xwindow_init(t_game	*game)
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		game_error("Window initialization failed");
-	game->mlx_win = mlx_new_window(\
-	game->mlx, IMGSIZE * game->map_width, IMGSIZE * game->map_height, "SO_LONG");
 }
 
 void	init_game_vars(t_game	*game)
@@ -133,15 +131,19 @@ void symb_to_img(t_game	*game)
 	}
 }
 
-int draw_pict(t_game *game)
+void draw_pict(t_game *game)
 {
-	symb_to_img(game);
+	// symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
-	return (0);
 }
 
-
+int	next_pict (t_game *game)
+{
+	// (void) game;
+	// draw_pict(game);
+	return (0);
+}
 
 
 /* The game starts In this function */
@@ -153,6 +155,7 @@ void	game_start(t_game *game, char *path)
 		check_map_conditions(game);
 		xwindow_init(game);
 		load_images(game);
+		game->mlx_win = mlx_new_window(game->mlx, IMGSIZE * game->map_width, IMGSIZE * game->map_height, "so_long");
 
 		//  хуки перехвата событий клавиатуры лево прово верх ни 
 		//  mlx_loop_hook - рендеринг следующего кардра и анимация	
@@ -161,8 +164,8 @@ void	game_start(t_game *game, char *path)
 		// Сделать правильный мейк для бонусов с тем же именем, чтобы пересобирался когда нужно++++++++++++++++++++++++++++++++
 		
 		draw_pict(game);
-		mlx_loop_hook(game->mlx, draw_pict, &game);
 		mlx_hook(game->mlx_win, 17, 0, close_window, &game); // Не забыть корректно прописать фукнцию закрытия
+		mlx_loop_hook(game->mlx, next_pict, &game);
 		mlx_loop(game->mlx);
 	}
 	
