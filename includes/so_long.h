@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 23:09:41 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 00:18:03 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 /* Key codes*/
 # define ESC 65307
 # define UP 119
-# define DOWN 97
-# define LEFT 115
+# define DOWN 115
+# define LEFT 97
 # define RIGHT 100
 
 /* Mac Keys */

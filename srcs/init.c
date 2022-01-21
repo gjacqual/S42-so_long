@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 23:20:42 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 00:25:23 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,8 @@ void draw_pict(t_game *game)
 	symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
-	printf("Позиция игрока x:%i, y:%i\n", game->player_x_pos, game->player_y_pos);
-	printf("Шагов: %i\n", game->moves);
+	// printf("Позиция игрока x:%i, y:%i\n", game->player_x_pos, game->player_y_pos);
+	// printf("Шагов: %i\n", game->moves);
 }
 
 int	next_pict(t_game *game)
@@ -162,14 +162,23 @@ int key_hook(int keycode, t_game *game)
 
 	if (keycode == ESC)
 		close_window(game);
-	// else if (keycode == UP)
-	// 	step_up(game);
-	// else if (keycode == DOWN)
-	// 	step_left(game);
-	// else if (keycode == LEFT)
-	// 	step_right(game);
-	// else if (keycode == RIGHT)
-	// 	player_step();
+	else if (keycode == UP)
+		y_pos = y_pos - 1;
+	else if (keycode == DOWN)
+		y_pos = y_pos + 1;
+	else if (keycode == LEFT)
+		x_pos = x_pos - 1;
+	else if (keycode == RIGHT)
+		x_pos = x_pos + 1;
+
+	game->map[game->player_y_pos][game->player_x_pos] = EMPTY_EL;
+	game->map[y_pos][x_pos] = PLAYER_EL;
+	game->player_x_pos = x_pos;
+	game->player_y_pos = y_pos;
+	
+	game->moves++;
+	printf("Moves:%i\n", game->moves);
+
 	return (0);
 }
 
