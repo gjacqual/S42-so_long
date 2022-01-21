@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 18:16:06 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/21 18:53:53 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,12 @@ void symb_to_img(t_game	*game)
 
 		tmp_height--;
 	}
+	tmp_height = game->map_height - 1;
 }
 
 void draw_pict(t_game *game)
 {
-	// symb_to_img(game);
+	symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
 }
@@ -141,7 +142,7 @@ void draw_pict(t_game *game)
 int	next_pict (t_game *game)
 {
 	// (void) game;
-	// draw_pict(game);
+	 draw_pict(game);
 	return (0);
 }
 
@@ -165,7 +166,7 @@ void	game_start(t_game *game, char *path)
 		
 		draw_pict(game);
 		mlx_hook(game->mlx_win, 17, 0, close_window, &game); // Не забыть корректно прописать фукнцию закрытия
-		mlx_loop_hook(game->mlx, next_pict, &game);
+		mlx_loop_hook(game->mlx, &next_pict, game);
 		mlx_loop(game->mlx);
 	}
 	
