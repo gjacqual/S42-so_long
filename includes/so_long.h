@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 00:18:03 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 01:38:08 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_game {
 	int		collect;
 	int		player_x_pos;
 	int		player_y_pos;
+	int		passed;
 	t_image img;
 	t_data	elements;
 }				t_game;

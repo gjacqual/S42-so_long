@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 00:25:23 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 02:42:13 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	init_game_vars(t_game	*game)
 	game->collect = 0;
 	game->player_x_pos = 0;
 	game->player_y_pos = 0;
+	game->passed = 0;
 }
 
 
@@ -140,14 +141,60 @@ void draw_pict(t_game *game)
 	symb_to_img(game);
 	mlx_string_put(
 		game->mlx, game->mlx_win, 10, 15, COUNTER_COLOR, "Move count:");
-	// printf("Позиция игрока x:%i, y:%i\n", game->player_x_pos, game->player_y_pos);
-	// printf("Шагов: %i\n", game->moves);
 }
 
 int	next_pict(t_game *game)
 {
 	 draw_pict(game);
 	return (0);
+}
+
+int step_conditions(t_game *game, int y_pos, int x_pos)
+{
+	char *cur_pos;
+	char *step_pos;
+
+	cur_pos = &game->map[game->player_y_pos][game->player_x_pos];
+	step_pos = &game->map[y_pos][x_pos];
+
+	if (*step_pos == WALL_EL)
+		return (0);
+	if (*step_pos == EXIT_EL)
+	{
+		if (game->collect != game->elements.coin_el)
+			return (0);
+		else
+		{	
+			game->passed = 1;
+			return (1);
+		}
+	}
+	
+	return (1);
+}
+
+void player_steps(t_game *game, int y_pos, int x_pos)
+{
+	char *cur_pos;
+	char *step_pos;
+
+	cur_pos = &game->map[game->player_y_pos][game->player_x_pos];
+	step_pos = &game->map[y_pos][x_pos];
+	
+	*cur_pos = EMPTY_EL;
+	if (*step_pos == COIN_EL)
+		game->collect++;
+	*step_pos = PLAYER_EL;
+	game->player_x_pos = x_pos;
+	game->player_y_pos = y_pos;
+	game->moves++;
+	printf("Moves: %i\n", game->moves);
+}
+
+void winner(t_game *game)
+{
+	printf("\033[1;34mYou Win!\033[0m Result: \033[1;32m%i\033[0m moves and \033[1;33m%i\033[0m coins\n", game->moves, game->collect);
+	close_window(game);
 }
 
 
@@ -159,34 +206,33 @@ int key_hook(int keycode, t_game *game)
 	x_pos = game->player_x_pos;
 	y_pos = game->player_y_pos;
 	
-
-	if (keycode == ESC)
-		close_window(game);
-	else if (keycode == UP)
-		y_pos = y_pos - 1;
-	else if (keycode == DOWN)
-		y_pos = y_pos + 1;
-	else if (keycode == LEFT)
-		x_pos = x_pos - 1;
-	else if (keycode == RIGHT)
-		x_pos = x_pos + 1;
-
-	game->map[game->player_y_pos][game->player_x_pos] = EMPTY_EL;
-	game->map[y_pos][x_pos] = PLAYER_EL;
-	game->player_x_pos = x_pos;
-	game->player_y_pos = y_pos;
-	
-	game->moves++;
-	printf("Moves:%i\n", game->moves);
-
+	if (keycode == ESC || keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT)
+	{
+		if (keycode == ESC)
+			close_window(game);
+		else if (keycode == UP)
+			y_pos = y_pos - 1;
+		else if (keycode == DOWN)
+			y_pos = y_pos + 1;
+		else if (keycode == LEFT)
+			x_pos = x_pos - 1;
+		else if (keycode == RIGHT)
+			x_pos = x_pos + 1;
+		if (step_conditions(game, y_pos, x_pos)) 
+		{
+			if (game->passed == 1)
+				winner(game);
+			player_steps(game, y_pos, x_pos);
+		}
+	}
 	return (0);
 }
 
 
 void hooks(t_game *game)
 {
-	mlx_key_hook (game->mlx_win, key_hook, game); //  хуки перехвата событий клавиатуры лево прово верх ни 
-	mlx_hook(game->mlx_win, 17, 0L, close_window, game); // Не забыть корректно прописать фукнцию закрытия
+	mlx_key_hook (game->mlx_win, key_hook, game);
+	mlx_hook(game->mlx_win, 17, 0L, close_window, game);
 	mlx_loop_hook(game->mlx, &next_pict, game);
 }
 
@@ -200,12 +246,6 @@ void	game_start(t_game *game, char *path)
 		xwindow_init(game);
 		load_images(game);
 		game->mlx_win = mlx_new_window(game->mlx, IMGSIZE * game->map_width, IMGSIZE * game->map_height, "so_long");
-
-		
-		//  mlx_loop_hook - рендеринг следующего кардра и анимация	
-		// не забыть сделать проверки на пустые пространства и переносы строки до начала карты
-		// Не забыть сделать проверку на пересбор либы
-		// Сделать правильный мейк для бонусов с тем же именем, чтобы пересобирался когда нужно++++++++++++++++++++++++++++++++
 		hooks(game);
 		mlx_loop(game->mlx);
 	}
