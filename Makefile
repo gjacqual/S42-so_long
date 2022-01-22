@@ -69,4 +69,11 @@ fclean: clean
 
 re:		fclean all
 
-.PHONY: all libft clean fclean re
+seliak:
+	@valgrind --leak-check=full ./so_long maps/map1.ber
+
+norm3:
+	norminette ./libft ./srcs ./includes
+
+
+.PHONY: all libft clean fclean re norm3 seliak
