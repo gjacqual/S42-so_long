@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 00:02:32 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 01:22:22 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define GRASS "grass.xpm"
 # define ROCK "rock.xpm"
 # define EXIT "chest.xpm"
+# define EXIT_CL "chest_close.xpm"
 # define COLLECT "blue_orb.xpm"
 # define PLAYER "player.xpm"
 # define ENEMY "skelet.xpm"
@@ -71,6 +72,7 @@ typedef struct s_image {
 	void	*grass;
 	void	*rock;
 	void	*exit;
+	void	*exit_cl;
 	void	*orb;
 	void	*player;
 	void	*win;

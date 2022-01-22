@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:33:15 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 06:06:52 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 01:36:12 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,14 @@ void	add_active_elem(t_game	*game, int tmp_height, int tmp_width)
 			game->img.player, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
 	}
 	if (game->map[tmp_height][tmp_width] == EXIT_EL)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.exit, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	{
+		if (game->collect != game->elements.coin_el)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, \
+			game->img.exit_cl, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+		else
+			mlx_put_image_to_window(game->mlx, game->mlx_win, \
+			game->img.exit, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	}
 }
 
 void	symb_to_img(t_game	*game)
