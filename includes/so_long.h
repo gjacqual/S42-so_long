@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 01:38:08 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 02:55:05 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ void	game_free_and_error(char *message, t_game *game);
 /* Verifiers */
 int		check_map_path(char *str);
 void	check_map_conditions(t_game *game);
+void	check_wall_closed(t_game *game);
+
+/* Free and close */
 int		close_window(t_game *game);
 
 #endif

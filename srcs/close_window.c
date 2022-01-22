@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 20:47:00 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 22:20:59 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 02:44:11 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	close_window(t_game *game)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(game->map[i])
+	while (game->map[i])
 	{
 		free(game->map[i]);
 		i++;

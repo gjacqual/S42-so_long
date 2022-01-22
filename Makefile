@@ -22,9 +22,11 @@ GNL_INC	:= ./srcs/get_next_line/get_next_line.h
 
 SRCS	=	./srcs/so_long.c\
 			./srcs/errors.c\
-			./srcs/checkers.c\
+			./srcs/check_map.c\
+			./srcs/check_file.c\
+			./srcs/check_wall.c\
 			./srcs/init.c\
-			./srcs/utils.c\
+			./srcs/close_window.c\
 			./srcs/get_next_line/get_next_line.c\
 			./srcs/get_next_line/get_next_line_utils.c
 			

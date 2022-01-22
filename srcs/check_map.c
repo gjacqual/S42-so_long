@@ -6,75 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 23:34:03 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 02:56:16 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	check_ext_ber(char *str)
-{
-	int		str_length;
-	char	*ext_ber;
-	int		ext_ber_length;
-
-	ext_ber = "ber";
-	ext_ber_length = 3;
-	str_length = ft_strlen(str);
-	while (ext_ber_length > 0)
-	{
-		if (str[str_length] != ext_ber[ext_ber_length])
-			return (0);
-		ext_ber_length--;
-		str_length--;
-	}	
-	return (1);
-}
-
-static int	check_g_wall(char *wall)
-{
-	while (*wall)
-	{
-		if (*wall != WALL_EL && *wall != '\n')
-			return (0);
-		wall++;
-	}
-	return (1);
-}
-
-static int	check_v_wall(t_game *game)
-{
-	int	tmp_width;
-	int	tmp_height;
-	int	i;
-
-	tmp_height = game->map_height - 1;
-	while (tmp_height >= 0)
-	{
-		if (game->map[tmp_height][0] != WALL_EL)
-			return (0);
-		tmp_width = ft_strlen(game->map[tmp_height]);
-		if (ft_strrchr(game->map[tmp_height], '\n'))
-			i = 2;
-		else
-			i = 1;
-		if (game->map[tmp_height][tmp_width - i] != WALL_EL)
-			return (0);
-		tmp_height--;
-	}
-	return (1);
-}
-
-static void	check_wall_closed(t_game *game)
-{
-	if (!check_g_wall(game->map[0])
-		|| !check_g_wall(game->map[game->map_height - 1]))
-		game_free_and_error(
-			"The map must be closed. Check the horizontal walls", game);
-	if (!check_v_wall(game))
-		game_free_and_error(
-			"The map must be closed. Check the veritcal walls", game);
-}
 
 static void	check_necessary_el(t_game *game)
 {
@@ -172,15 +108,4 @@ void	check_map_conditions(t_game *game)
 	
 }
 
-int	check_map_path(char *str)
-{
-	if (!ft_strrchr(str, '.'))
-	{
-		game_error("Invalid file name, missing extension");
-	}
-	else if (!check_ext_ber(str))
-	{
-		game_error("Unsupported file type. Please, use only .ber extension.");
-	}
-	return (1);
-}
+
