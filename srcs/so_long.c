@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/21 19:36:48 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 23:19:54 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int argc, char	**argv)
 {
 	t_game	game;
 
-	if (argc < 2)
-		game_error("Enter the map file path (ex: maps/map.ber) after");
+	if (argc != 2)
+		game_error("Enter one map file path (ex: ./so_long maps/map.ber)");
 	else if (check_map_path(argv[1]))
 	{
 		game_start(&game, argv[1]);

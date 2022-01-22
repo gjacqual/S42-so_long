@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 05:43:14 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 00:12:04 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	init_game_vars(t_game	*game)
 	game->player_y_pos = 0;
 	game->passed = 0;
 	game->the_end = 0;
+	game->map = NULL;
+	game->map_begin = 0;
+	game->map_end = 0;
 }
 
 /* The game starts In this function */

@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 05:54:33 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 00:02:32 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct s_game {
 	int		the_end;
 	t_image	img;
 	t_data	elements;
+	int		map_begin;
+	int		map_end;
 }				t_game;
 
 /* Initialization */
@@ -100,6 +102,7 @@ void	init_game_vars(t_game	*game);
 void	xwindow_init(t_game	*game);
 void	game_start(t_game *game, char *path);
 void	load_images(t_game	*game);
+void	find_map_size(char *path, t_game *game);
 int		read_map(char *path, t_game *game);
 int		next_pict(t_game *game);
 
@@ -112,6 +115,7 @@ void	game_free_and_error(char *message, t_game *game);
 int		check_map_path(char *str);
 void	check_map_conditions(t_game *game);
 void	check_wall_closed(t_game *game);
+void	check_diff_map_obj(char *path);
 
 /*Hooks and moves*/
 void	hooks(t_game *game);

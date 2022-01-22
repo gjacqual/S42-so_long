@@ -26,6 +26,7 @@ SRCS	=	./srcs/so_long.c\
 			./srcs/check_file.c\
 			./srcs/check_wall.c\
 			./srcs/load_images.c\
+			./srcs/find_map_size.c\
 			./srcs/read_map.c\
 			./srcs/hooks.c\
 			./srcs/steps.c\
@@ -70,7 +71,10 @@ fclean: clean
 re:		fclean all
 
 seleak:
-	@valgrind --leak-check=full ./so_long maps/map1.ber
+	@valgrind --leak-check=full --track-origins=yes ./so_long maps/map_3x9.ber
+
+seleakf:
+	@valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=med --track-origins=yes ./so_long maps/map_3x9.ber
 
 norm3:
 	norminette ./libft ./srcs ./includes
