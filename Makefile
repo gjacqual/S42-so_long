@@ -25,6 +25,11 @@ SRCS	=	./srcs/so_long.c\
 			./srcs/check_map.c\
 			./srcs/check_file.c\
 			./srcs/check_wall.c\
+			./srcs/load_images.c\
+			./srcs/read_map.c\
+			./srcs/hooks.c\
+			./srcs/steps.c\
+			./srcs/draw_picture.c\
 			./srcs/init.c\
 			./srcs/close_window.c\
 			./srcs/get_next_line/get_next_line.c\

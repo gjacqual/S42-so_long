@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 02:55:05 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 04:53:21 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,13 @@
 # define M_LEFT 0
 # define M_RIGHT 2
 
-
 /* map elements */
 typedef struct s_data {
-	int empty_el;
-	int wall_el;
-	int coin_el;
-	int player;
-	int exit; 
+	int	empty_el;
+	int	wall_el;
+	int	coin_el;
+	int	player;
+	int	exit;
 }				t_data;
 
 /* Images */
@@ -82,23 +81,25 @@ typedef struct s_image {
 typedef struct s_game {
 	void	*mlx;
 	void	*mlx_win;
-	int 	map_height;
+	int		map_height;
 	int		map_width;
-	char 	**map;
+	char	**map;
 	int		moves;
 	int		collect;
 	int		player_x_pos;
 	int		player_y_pos;
 	int		passed;
-	t_image img;
+	t_image	img;
 	t_data	elements;
 }				t_game;
 
-
 /* Initialization */
-void 	init_game_vars(t_game	*game);
+void	init_game_vars(t_game	*game);
 void	xwindow_init(t_game	*game);
-void 	game_start(t_game *game, char *path);
+void	game_start(t_game *game, char *path);
+void	load_images(t_game	*game);
+int		read_map(char *path, t_game *game);
+int		next_pict(t_game *game);
 
 /* Errors */
 void	game_error(char *message);
@@ -110,7 +111,13 @@ int		check_map_path(char *str);
 void	check_map_conditions(t_game *game);
 void	check_wall_closed(t_game *game);
 
+/*Hooks and moves*/
+void	hooks(t_game *game);
+int		step_conditions(t_game *game, int y_pos, int x_pos);
+void	player_steps(t_game *game, int y_pos, int x_pos);
+
 /* Free and close */
 int		close_window(t_game *game);
+void	winner(t_game *game);
 
 #endif

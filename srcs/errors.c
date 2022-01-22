@@ -6,18 +6,18 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:34:26 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/20 23:42:27 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 04:49:00 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
 void	game_free_and_error(char *message, t_game *game)
 {	
-	int i;
+	int	i;
+
 	i = 0;
-	while(game->map[i])
+	while (game->map[i])
 	{
 		free(game->map[i]);
 		i++;
