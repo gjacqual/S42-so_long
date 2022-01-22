@@ -1,7 +1,7 @@
 NAME		:=	so_long
 
 CC :=  clang
-CFLAGS	:= -Wall -Wextra -Werror -g
+CFLAGS	:= -Wall -Wextra -Werror -g -MMD
 RM	= rm -f
 
 LIBFT_DIR	:= libft
@@ -16,9 +16,10 @@ SRCS_DIRS	=	./srcs/\
 
 vpath %.c ${SRCS_DIRS}
 
-INC_DIR := ./includes
-INC		:= includes/so_long.h
-GNL_INC	:= ./srcs/get_next_line/get_next_line.h
+INC_DIR 	:= ./includes
+INC			:= includes/so_long.h
+GNL_INC		:= ./srcs/get_next_line/get_next_line.h
+LIBFT_INC	:= .${LIBFT_DIR}
 
 SRCS	=	./srcs/so_long.c\
 			./srcs/errors.c\
@@ -48,7 +49,7 @@ ${MLX_LIB}:
 	@make -C ./${MLX_DIR}
 
 ${NAME}: ${OBJS} ${LIBFT_LIB} ${MLX_LIB} ${INC} ${GNL_INC} Makefile
-	@ ${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} ${MLX_LIB} -I ${INC}
+	${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB} ${MLX_LIB} -I ${INC}
 	@echo "So_Long App is ready"	
 
 ${OBJS_DIR}:
