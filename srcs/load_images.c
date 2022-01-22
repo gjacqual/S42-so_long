@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:23:04 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 04:47:15 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 05:54:00 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	load_images(t_game	*game)
 	game->mlx, IMGPATH COLLECT, &game->img.img_width, &game->img.img_height);
 	game->img.player = mlx_xpm_file_to_image(\
 	game->mlx, IMGPATH PLAYER, &game->img.img_width, &game->img.img_height);
-	game->img.enemy = mlx_xpm_file_to_image(\
-	game->mlx, IMGPATH ENEMY, &game->img.img_width, &game->img.img_height);
+	game->img.win = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH PLAYER_WIN, &game->img.img_width, &game->img.img_height);
 }

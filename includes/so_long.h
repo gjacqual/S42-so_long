@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 04:53:21 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 05:54:33 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define COLLECT "blue_orb.xpm"
 # define PLAYER "player.xpm"
 # define ENEMY "skelet.xpm"
+# define PLAYER_WIN "win.xpm"
 # define IMGSIZE 32
 
 # define COUNTER_COLOR 0x00FFFF
@@ -72,7 +73,7 @@ typedef struct s_image {
 	void	*exit;
 	void	*orb;
 	void	*player;
-	void	*enemy;
+	void	*win;
 	int		img_width;
 	int		img_height;
 }			t_image;
@@ -89,6 +90,7 @@ typedef struct s_game {
 	int		player_x_pos;
 	int		player_y_pos;
 	int		passed;
+	int		the_end;
 	t_image	img;
 	t_data	elements;
 }				t_game;
