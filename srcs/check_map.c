@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 04:49:38 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 07:38:53 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ static int	check_map_rect(t_game *game)
 	tmp_height = game->map_height - 1;
 	while (tmp_height >= 0)
 	{
+		// if (game->map[tmp_height][0] == '\n')
+		// {
+		// 	tmp_height--;
+		// 	game->map_height--;
+		// }
 		if (ft_strrchr(game->map[tmp_height], '\n'))
 			current_len = ft_strlen(game->map[tmp_height]) - 1;
 		else

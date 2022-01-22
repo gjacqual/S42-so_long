@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:29:42 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 04:04:21 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 07:57:10 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	read_map(char *path, t_game *game)
 		system_error("Opening the file failed");
 	i = 0;
 	tmp_line = get_next_line(fd);
-		game->map[i] = tmp_line;
+	game->map[i] = tmp_line;
 	while (tmp_line != NULL)
 	{	
 		tmp_line = get_next_line(fd);
