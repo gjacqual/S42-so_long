@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 07:05:12 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:32:10 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,14 @@
 # define PLAYER "player.xpm"
 # define ENEMY "skelet.xpm"
 # define PLAYER_WIN "win.xpm"
-# define IMGSIZE 32
+# define IMGSIZE 45
 
+/* Mover counter */
+# define MOVES_TEXT "MOVES COUNT: "
+# define IF_WIN_TEXT "*** You Win! ***"
+# define IF_LOSE_TEXT "*** You Lost! ***"
 # define COUNTER_COLOR 0x00FFFF
-
+# define RESULT_COLOR 0xF6FF04
 /* Valid map symbols */
 # define EMPTY_EL '0'
 # define WALL_EL '1'
@@ -92,6 +96,7 @@ typedef struct s_game {
 	int		player_x_pos;
 	int		player_y_pos;
 	int		passed;
+	int		died;
 	int		the_end;
 	t_image	img;
 	t_data	elements;

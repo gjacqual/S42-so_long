@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 00:59:58 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 05:41:32 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 19:46:29 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	hooks(t_game *game)
 {
 	mlx_key_hook (game->mlx_win, key_hook, game);
 	mlx_hook(game->mlx_win, 17, 0L, close_window, game);
-	mlx_loop_hook(game->mlx, &next_pict, game);
+	mlx_loop_hook(game->mlx, next_pict, game);
 }

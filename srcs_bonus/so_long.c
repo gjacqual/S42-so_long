@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 06:27:45 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 19:31:07 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int argc, char	**argv)
 		game_error("Enter one map file path (ex: ./so_long maps/map.ber)");
 	else if (check_map_path(argv[1]))
 	{
-		printf("Это бонус");
 		game_start(&game, argv[1]);
 		return (0);
 	}

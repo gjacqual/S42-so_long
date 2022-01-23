@@ -6,18 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:35:59 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 06:27:51 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:20:59 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-void	winner(t_game *game)
-{
-	printf("\033[1;34mYou Win! \033[0m");
-	printf("Result: \033[1;32m%i\033[0m moves and \033[1;33m%i\033[0m coins\n", \
-	game->moves, game->collect);
-}
 
 int	step_conditions(t_game *game, int y_pos, int x_pos)
 {
@@ -57,14 +50,12 @@ void	player_steps(t_game *game, int y_pos, int x_pos)
 		game->player_x_pos = x_pos;
 		game->player_y_pos = y_pos;
 		game->moves++;
-		printf("Moves: %i\n", game->moves);
 	}
 	else if (game->passed == 1)
 	{
 		*cur_pos = EMPTY_EL;
 		*step_pos = PLAYER_EL;
 		game->moves++;
-		winner(game);
 		game->the_end = 1;
 	}
 }

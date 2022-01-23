@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 06:55:31 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:12:27 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	xwindow_init(t_game	*game)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
+		game_error("MLX initialization failed");
+	game->mlx_win = mlx_new_window(game->mlx, \
+		IMGSIZE * game->map_width, IMGSIZE * game->map_height, "So_Long_Bonus");
+	if (game->mlx_win == NULL)
 		game_error("Window initialization failed");
 }
 
@@ -29,6 +33,7 @@ void	init_game_vars(t_game	*game)
 	game->player_x_pos = 0;
 	game->player_y_pos = 0;
 	game->passed = 0;
+	game->died = 0; 
 	game->the_end = 0;
 	game->map = NULL;
 	game->map_begin = 0;
@@ -44,8 +49,6 @@ void	game_start(t_game *game, char *path)
 		check_map_conditions(game);
 		xwindow_init(game);
 		load_images(game);
-		game->mlx_win = mlx_new_window(game->mlx, \
-		IMGSIZE * game->map_width, IMGSIZE * game->map_height, "so_long_Bonus");
 		hooks(game);
 		mlx_loop(game->mlx);
 	}
