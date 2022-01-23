@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 00:59:58 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 05:41:32 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:27:27 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	key_hook(int keycode, t_game *game)
 {

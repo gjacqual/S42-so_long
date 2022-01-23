@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 00:12:04 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:55:31 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /* Initializing the game window */
 void	xwindow_init(t_game	*game)
@@ -45,7 +45,7 @@ void	game_start(t_game *game, char *path)
 		xwindow_init(game);
 		load_images(game);
 		game->mlx_win = mlx_new_window(game->mlx, \
-		IMGSIZE * game->map_width, IMGSIZE * game->map_height, "so_long");
+		IMGSIZE * game->map_width, IMGSIZE * game->map_height, "so_long_Bonus");
 		hooks(game);
 		mlx_loop(game->mlx);
 	}

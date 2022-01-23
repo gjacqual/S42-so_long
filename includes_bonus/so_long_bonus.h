@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 03:30:09 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 07:05:12 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PLAYER "player.xpm"
 # define ENEMY "skelet.xpm"
 # define PLAYER_WIN "win.xpm"
-# define IMGSIZE 42
+# define IMGSIZE 32
 
 # define COUNTER_COLOR 0x00FFFF
 

@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 02:46:25 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 02:50:02 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:26:27 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	check_ext_ber(char *str)
 {

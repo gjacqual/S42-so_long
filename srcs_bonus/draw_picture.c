@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:33:15 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 01:36:12 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:27:12 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	add_active_elem(t_game	*game, int tmp_height, int tmp_width)
 {

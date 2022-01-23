@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:35:59 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 06:10:22 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:27:51 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	winner(t_game *game)
 {

@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 15:50:01 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:26:59 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	check_necessary_el(t_game *game)
 {

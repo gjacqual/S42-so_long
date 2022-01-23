@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 02:51:53 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 02:53:57 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:27:05 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	check_g_wall(char *wall)
 {

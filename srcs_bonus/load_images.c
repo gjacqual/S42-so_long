@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:23:04 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 01:21:54 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:27:38 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /* Upload all images to the game */
 void	load_images(t_game	*game)

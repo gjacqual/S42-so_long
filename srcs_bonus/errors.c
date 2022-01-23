@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:34:26 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 06:43:28 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 06:27:15 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	game_free_and_error(char *message, t_game *game)
 {	
