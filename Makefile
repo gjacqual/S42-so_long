@@ -21,7 +21,9 @@ INC			:= includes/so_long.h
 INC_B_DIR 	:= includes_bonus
 INC_B		:= includes_bonus/so_long_bonus.h
 
+#Get next line
 GNL_INC		:= ./srcs/get_next_line/get_next_line.h
+GNL_B_INC	:= ./srcs_bonus/get_next_line_bonus/get_next_line.h
 
 LIBFT_INC	:= .${LIBFT_DIR}
 
@@ -29,7 +31,7 @@ LIBFT_INC	:= .${LIBFT_DIR}
 SRCS_DIRS	=	./srcs/\
 				./srcs/get_next_line/
 SRCS_B_DIRS	=	./srcs_bonus/\
-				./srcs_bonus/get_next_line/
+				./srcs_bonus/get_next_line_bonus/
 
 # Search for src in catalogs
 vpath %.c ${if ${BONUS_MODE}, ${SRCS_B_DIRS}, ${SRCS_DIRS}}
@@ -64,8 +66,8 @@ SRCS_B	=	./srcs_bonus/so_long.c\
 			./srcs_bonus/draw_picture.c\
 			./srcs_bonus/init.c\
 			./srcs_bonus/close_window.c\
-			./srcs_bonus/get_next_line/get_next_line.c\
-			./srcs_bonus/get_next_line/get_next_line_utils.c
+			./srcs_bonus/get_next_line_bonus/get_next_line.c\
+			./srcs_bonus/get_next_line_bonus/get_next_line_utils.c
 
 # Object files
 OBJS_DIR 	:=	./objs
@@ -104,11 +106,11 @@ ${OBJS_B_DIR}:
 
 # Include all .d files
 -include ${DEP}
-${OBJS_DIR}/%.o : %.c ${INC} ${GNL_INC} Makefile | ${OBJS_B_DIR}  
+${OBJS_DIR}/%.o : %.c ${INC} ${GNL_INC} Makefile | ${OBJS_DIR}  
 			${CC} ${CFLAGS} $(INC_DIR:%=-I %) -c $< -o $@
 			@echo "The object BONUS file is ready in OBJS_DIR"
 
-${OBJS_B_DIR}/%.o : %.c ${INC_B} ${GNL_INC} Makefile | ${OBJS_B_DIR} 
+${OBJS_B_DIR}/%.o : %.c ${INC_B} ${GNL_B_INC} Makefile | ${OBJS_B_DIR} 
 			${CC} ${CFLAGS} $(INC_B_DIR:%=-I %) -c $< -o $@
 			@echo "The object BONUS file is ready in OBJS_B_DIR"
 
