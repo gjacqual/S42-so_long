@@ -6,11 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 02:24:28 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 23:19:54 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 03:29:10 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	main(int argc, char	**argv)
 {
@@ -20,6 +20,7 @@ int	main(int argc, char	**argv)
 		game_error("Enter one map file path (ex: ./so_long maps/map.ber)");
 	else if (check_map_path(argv[1]))
 	{
+		printf("Это бонус");
 		game_start(&game, argv[1]);
 		return (0);
 	}

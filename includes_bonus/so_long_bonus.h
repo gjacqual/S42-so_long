@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 03:47:48 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 03:30:09 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
- 
-// # include <unistd.h>
-// # include <stdlib.h>
-// # include <stdio.h>
-// # include <string.h>
-// # include <errno.h>
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <errno.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
 # include "../srcs/get_next_line/get_next_line.h"
@@ -33,7 +33,7 @@
 # define PLAYER "player.xpm"
 # define ENEMY "skelet.xpm"
 # define PLAYER_WIN "win.xpm"
-# define IMGSIZE 32
+# define IMGSIZE 42
 
 # define COUNTER_COLOR 0x00FFFF
 
