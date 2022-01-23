@@ -6,18 +6,18 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 03:47:48 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 05:37:32 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
- 
-// # include <unistd.h>
-// # include <stdlib.h>
-// # include <stdio.h>
-// # include <string.h>
-// # include <errno.h>
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <errno.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
 # include "../srcs/get_next_line/get_next_line.h"
