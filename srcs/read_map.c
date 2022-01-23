@@ -6,12 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:29:42 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 01:08:48 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 18:19:20 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static void	diff_recta_check(t_game *game, int i)
 {
