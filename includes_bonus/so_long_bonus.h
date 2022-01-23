@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 21:32:10 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/23 23:39:26 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,26 @@
 # include "../srcs/get_next_line/get_next_line.h"
 # include "../mlx-linux/mlx.h"
 
-/* Images paths */
-# define IMGPATH "./images/"
+/* Images Bonus paths */
+# define IMGPATH "./images_bonus/"
 # define GRASS "grass.xpm"
-# define ROCK "rock.xpm"
-# define EXIT "chest.xpm"
-# define EXIT_CL "chest_close.xpm"
-# define COLLECT "blue_orb.xpm"
-# define PLAYER "player.xpm"
+# define ROCK "tree.xpm"
+# define EXIT "chest_open.xpm"
+# define EXIT_CL "chest_closed.xpm"
+# define COLLECT "coin.xpm"
+# define PLAYER_F "player_face.xpm"
+# define PLAYER_B "player_top.xpm"
+# define PLAYER_L "player_left.xpm"
+# define PLAYER_R "player_right.xpm"
 # define ENEMY "skelet.xpm"
-# define PLAYER_WIN "win.xpm"
+# define PLAYER_WIN "winner.xpm"
 # define IMGSIZE 45
 
 /* Mover counter */
 # define MOVES_TEXT "MOVES COUNT: "
 # define IF_WIN_TEXT "*** You Win! ***"
 # define IF_LOSE_TEXT "*** You Lost! ***"
-# define COUNTER_COLOR 0x00FFFF
+# define COUNTER_COLOR 0xFFEA00
 # define RESULT_COLOR 0xF6FF04
 /* Valid map symbols */
 # define EMPTY_EL '0'
@@ -47,6 +50,9 @@
 # define COIN_EL 'C'
 # define EXIT_EL 'E'
 # define PLAYER_EL 'P'
+
+/* Enemy */
+# define ENEMY_EL 'S'
 
 /* Key codes*/
 # define ESC 65307
@@ -79,6 +85,9 @@ typedef struct s_image {
 	void	*exit_cl;
 	void	*orb;
 	void	*player;
+	void	*player_up;
+	void	*player_le;
+	void	*player_ri;
 	void	*win;
 	int		img_width;
 	int		img_height;
