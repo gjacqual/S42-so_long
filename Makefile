@@ -136,8 +136,8 @@ seleak	:
 seleakf	:
 			@valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=med --track-origins=yes ./so_long maps/map_3x9.ber
 
-norm3	:
+norma	:
 			norminette ./libft ./srcs ./includes
 
 
-.PHONY	: 	all libft clean fclean re norm3 seleak bonus
+.PHONY	: 	all libft clean fclean re norma seleak bonus
