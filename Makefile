@@ -146,7 +146,4 @@ seleakf	:
 norma	:
 			norminette ./libft ./srcs ./includes ./srcs_bonus ./includes_bonus
 
-
 .PHONY	: 	all libft clean fclean re norma seleak bonus
-
- 
