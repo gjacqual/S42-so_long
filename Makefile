@@ -69,6 +69,8 @@ SRCS_B	=	./srcs_bonus/so_long.c\
 			./srcs_bonus/draw_elements.c\
 			./srcs_bonus/player_look.c\
 			./srcs_bonus/enemy_map.c\
+			./srcs_bonus/add_coin_element.c\
+			./srcs_bonus/add_player_element.c\
 			./srcs_bonus/get_next_line_bonus/get_next_line.c\
 			./srcs_bonus/get_next_line_bonus/get_next_line_utils.c
 

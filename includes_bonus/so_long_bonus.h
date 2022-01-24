@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 22:37:55 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:52:58 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,8 @@ int		next_pict(t_game *game);
 
 /* Draw Map Picture */
 void	symb_to_img(t_game	*game);
+void	add_coin_elem(t_game	*game, int tmp_height, int tmp_width);
+void	add_player_elem(t_game	*game, int tmp_height, int tmp_width);
 
 /* Errors */
 void	game_error(char *message);
