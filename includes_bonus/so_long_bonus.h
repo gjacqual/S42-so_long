@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 23:39:26 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 03:21:50 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,28 @@
 # include "../mlx-linux/mlx.h"
 
 /* Images Bonus paths */
+# define IMGSIZE 45
+# define FRAME_RATE 4
 # define IMGPATH "./images_bonus/"
 # define GRASS "grass.xpm"
 # define ROCK "tree.xpm"
 # define EXIT "chest_open.xpm"
 # define EXIT_CL "chest_closed.xpm"
-# define COLLECT "coin.xpm"
 # define PLAYER_F "player_face.xpm"
 # define PLAYER_B "player_top.xpm"
 # define PLAYER_L "player_left.xpm"
 # define PLAYER_R "player_right.xpm"
 # define ENEMY "skelet.xpm"
 # define PLAYER_WIN "winner.xpm"
-# define IMGSIZE 45
+
+/* Coin images */
+# define COLLECT1 "coin1.xpm"
+# define COLLECT2 "coin2.xpm"
+# define COLLECT3 "coin3.xpm"
+# define COLLECT4 "coin4.xpm"
+# define COLLECT5 "coin5.xpm"
+# define COLLECT6 "coin6.xpm"
+
 
 /* Mover counter */
 # define MOVES_TEXT "MOVES COUNT: "
@@ -70,12 +79,22 @@
 
 /* map elements */
 typedef struct s_data {
-	int	empty_el;
-	int	wall_el;
-	int	coin_el;
-	int	player;
-	int	exit;
-}				t_data;
+	int		empty_el;
+	int		wall_el;
+	int		coin_el;
+	int		player;
+	int		exit;
+}			t_data;
+
+/* Animations */
+typedef struct s_anima {
+	void	*img01;
+	void	*img02;
+	void	*img03;
+	void	*img04;
+	void	*img05;
+	void	*img06;
+}			t_anima;
 
 /* Images */
 typedef struct s_image {
@@ -83,7 +102,7 @@ typedef struct s_image {
 	void	*rock;
 	void	*exit;
 	void	*exit_cl;
-	void	*orb;
+	t_anima	orb;
 	void	*player;
 	void	*player_up;
 	void	*player_le;
@@ -92,6 +111,15 @@ typedef struct s_image {
 	int		img_width;
 	int		img_height;
 }			t_image;
+
+
+
+
+
+/* Player Profile */
+typedef struct s_dude {
+	int		face;
+}			t_dude;
 
 /* Game structure */
 typedef struct s_game {
@@ -109,9 +137,10 @@ typedef struct s_game {
 	int		the_end;
 	t_image	img;
 	t_data	elements;
+	t_dude	player;
 	int		map_begin;
 	int		map_end;
-}				t_game;
+}			t_game;
 
 /* Initialization */
 void	init_game_vars(t_game	*game);
@@ -121,6 +150,9 @@ void	load_images(t_game	*game);
 void	find_map_size(char *path, t_game *game);
 int		read_map(char *path, t_game *game);
 int		next_pict(t_game *game);
+
+/* Draw Map Picture */
+void	symb_to_img(t_game	*game);
 
 /* Errors */
 void	game_error(char *message);
@@ -137,6 +169,7 @@ void	check_diff_map_obj(char *path);
 void	hooks(t_game *game);
 int		step_conditions(t_game *game, int y_pos, int x_pos);
 void	player_steps(t_game *game, int y_pos, int x_pos);
+void	player_look_and_move(int keycode, t_game *game);
 
 /* Free and close */
 int		close_window(t_game *game);
