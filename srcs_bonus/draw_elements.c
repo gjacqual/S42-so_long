@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 00:07:41 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 07:48:22 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:52:21 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	add_enemy_elem(t_game	*game, int tmp_height, int tmp_width)
 {
+
 	mlx_put_image_to_window(game->mlx, game->mlx_win, \
 				game->img.enemy.img01, IMGSIZE * tmp_width, \
 				IMGSIZE * tmp_height);
 }
-
 
 static void	add_grass_elem(t_game	*game, int tmp_height, int tmp_width)
 {
@@ -30,50 +30,6 @@ static void	add_wall_elem(t_game	*game, int tmp_height, int tmp_width)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, \
 	game->img.rock, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-}
-
-static void	add_coin_elem(t_game	*game, int tmp_height, int tmp_width)
-{
-	if (game->anim_count == 1)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.orb.img01, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	else if (game->anim_count == 2)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.orb.img02, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	else if (game->anim_count == 3)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.orb.img03, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	else if (game->anim_count == 4)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.orb.img04, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	else if (game->anim_count == 5)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.orb.img05, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	else if (game->anim_count == 6)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.orb.img06, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-}
-
-static void	add_player_elem(t_game	*game, int tmp_height, int tmp_width)
-{
-	if (game->passed == 1)
-		mlx_put_image_to_window(game->mlx, game->mlx_win, \
-		game->img.win, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	else
-	{
-		if (game->player_face == 1)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, \
-			game->img.player, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-		else if (game->player_face == 2)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, \
-			game->img.player_up, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-		else if (game->player_face == 3)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, \
-			game->img.player_le, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-		else if (game->player_face == 4)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, \
-			game->img.player_ri, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-	}
 }
 
 static void	add_exit_elem(t_game	*game, int tmp_height, int tmp_width)
