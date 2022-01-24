@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:33:15 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 01:36:12 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 07:50:04 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	symb_to_img(t_game	*game)
 		}
 		tmp_height--;
 	}
-	tmp_height = game->map_height - 1;
 }
 
 int	next_pict(t_game *game)

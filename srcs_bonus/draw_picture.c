@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:33:15 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 00:08:20 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 04:58:28 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,22 @@ static void	string_on_win(t_game	*game)
 	}
 }
 
+void	speed_manage(t_game *game)
+{
+	game->frame_count++;
+	if (game->frame_count == FRAME_RATE)
+	{	
+		game->frame_count = 0;
+		game->anim_count++;
+	}
+	if (game->anim_count == 6)
+		game->anim_count = 1;
+}
+
 int	next_pict(t_game *game)
 {
 	symb_to_img(game);
 	string_on_win(game);
+	speed_manage(game);
 	return (0);
 }

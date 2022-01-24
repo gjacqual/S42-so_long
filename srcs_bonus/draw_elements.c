@@ -6,13 +6,27 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 00:07:41 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 02:45:45 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 07:48:22 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	add_coin_wall(t_game	*game, int tmp_height, int tmp_width)
+static void	add_enemy_elem(t_game	*game, int tmp_height, int tmp_width)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, \
+				game->img.enemy.img01, IMGSIZE * tmp_width, \
+				IMGSIZE * tmp_height);
+}
+
+
+static void	add_grass_elem(t_game	*game, int tmp_height, int tmp_width)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, \
+	game->img.grass, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+}
+
+static void	add_wall_elem(t_game	*game, int tmp_height, int tmp_width)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, \
 	game->img.rock, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
@@ -20,8 +34,24 @@ static void	add_coin_wall(t_game	*game, int tmp_height, int tmp_width)
 
 static void	add_coin_elem(t_game	*game, int tmp_height, int tmp_width)
 {
-	mlx_put_image_to_window(game->mlx, game->mlx_win, \
-	game->img.orb.img01, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	if (game->anim_count == 1)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->img.orb.img01, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	else if (game->anim_count == 2)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->img.orb.img02, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	else if (game->anim_count == 3)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->img.orb.img03, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	else if (game->anim_count == 4)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->img.orb.img04, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	else if (game->anim_count == 5)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->img.orb.img05, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+	else if (game->anim_count == 6)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->img.orb.img06, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
 }
 
 static void	add_player_elem(t_game	*game, int tmp_height, int tmp_width)
@@ -31,16 +61,16 @@ static void	add_player_elem(t_game	*game, int tmp_height, int tmp_width)
 		game->img.win, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
 	else
 	{
-		if (game->player.face == 1)
+		if (game->player_face == 1)
 			mlx_put_image_to_window(game->mlx, game->mlx_win, \
 			game->img.player, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-		else if (game->player.face == 2)
+		else if (game->player_face == 2)
 			mlx_put_image_to_window(game->mlx, game->mlx_win, \
 			game->img.player_up, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-		else if (game->player.face == 3)
+		else if (game->player_face == 3)
 			mlx_put_image_to_window(game->mlx, game->mlx_win, \
 			game->img.player_le, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
-		else if (game->player.face == 4)
+		else if (game->player_face == 4)
 			mlx_put_image_to_window(game->mlx, game->mlx_win, \
 			game->img.player_ri, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
 	}
@@ -68,19 +98,19 @@ void	symb_to_img(t_game	*game)
 		while (game->map[tmp_height][tmp_width])
 		{
 			if (game->map[tmp_height][tmp_width] == EMPTY_EL)
-				mlx_put_image_to_window(game->mlx, game->mlx_win, \
-				game->img.grass, IMGSIZE * tmp_width, IMGSIZE * tmp_height);
+				add_grass_elem(game, tmp_height, tmp_width);
 			else if (game->map[tmp_height][tmp_width] == WALL_EL)
-				add_coin_wall(game, tmp_height, tmp_width);
+				add_wall_elem(game, tmp_height, tmp_width);
 			else if (game->map[tmp_height][tmp_width] == COIN_EL)
 				add_coin_elem(game, tmp_height, tmp_width);
 			else if (game->map[tmp_height][tmp_width] == PLAYER_EL)
 				add_player_elem(game, tmp_height, tmp_width);
 			else if (game->map[tmp_height][tmp_width] == EXIT_EL)
 				add_exit_elem(game, tmp_height, tmp_width);
+			else if (game->map[tmp_height][tmp_width] == ENEMY_EL)
+				add_enemy_elem(game, tmp_height, tmp_width);
 			tmp_width++;
 		}
 		tmp_height--;
 	}
-	tmp_height = game->map_height - 1;
 }

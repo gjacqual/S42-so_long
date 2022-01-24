@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 06:12:37 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 06:47:03 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,14 @@ typedef struct s_data {
 	int		enemy;
 }			t_data;
 
+/* Enemy Profile */
+typedef struct s_skelet {
+	int		face;
+	int		enemy_x_pos;
+	int		enemy_y_pos;
+}			t_skelet;
+
+
 /* Animations */
 typedef struct s_anima {
 	void	*img01;
@@ -104,25 +112,21 @@ typedef struct s_anima {
 
 /* Images */
 typedef struct s_image {
-	void	*grass;
-	void	*rock;
-	void	*exit;
-	void	*exit_cl;
-	t_anima	orb;
-	void	*player;
-	void	*player_up;
-	void	*player_le;
-	void	*player_ri;
-	void	*win;
-	int		img_width;
-	int		img_height;
-	t_anima	enemy;
+	void		*grass;
+	void		*rock;
+	void		*exit;
+	void		*exit_cl;
+	t_anima		orb;
+	t_skelet	skelet;
+	void		*player;
+	void		*player_up;
+	void		*player_le;
+	void		*player_ri;
+	void		*win;
+	int			img_width;
+	int			img_height;
+	t_anima		enemy;
 }			t_image;
-
-/* Player Profile */
-typedef struct s_dude {
-	int		face;
-}			t_dude;
 
 /* Game structure */
 typedef struct s_game {
@@ -140,7 +144,7 @@ typedef struct s_game {
 	int		the_end;
 	t_image	img;
 	t_data	elements;
-	t_dude	player;
+	int		player_face;
 	int		map_begin;
 	int		map_end;
 	int		frame_count;

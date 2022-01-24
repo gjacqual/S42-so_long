@@ -6,16 +6,19 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:33:16 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 06:27:19 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 06:06:33 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+
+
+/* Allowed symbols in the game */
 static int	valid_chars(char c)
 {
 	if (c == EMPTY_EL || c == WALL_EL \
-	|| c == COIN_EL || c == EXIT_EL || c == PLAYER_EL)
+	|| c == COIN_EL || c == EXIT_EL || c == PLAYER_EL || c == ENEMY_EL)
 		return (1);
 	else
 		return (0);
