@@ -138,7 +138,7 @@ re_bonus	:	fclean bonus
 
 # Leak Search
 seleak	:
-			@valgrind --leak-check=full --track-origins=yes ./so_long  maps_bonus/map1_bonus.ber
+			@valgrind --leak-check=full --track-origins=yes ./so_long  maps/map1.ber
 
 seleakf	:
 			@valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=med --track-origins=yes ./so_long maps_bonus/map1_bonus.ber
