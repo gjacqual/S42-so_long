@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 07:33:32 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 10:10:40 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_game_vars(t_game	*game)
 	game->player_face = 1;
 	game->frame_count = 0;
 	game->anim_count = 1;
+	game->skelet.wait = 0;
 }
 
 /* The game starts In this function */
