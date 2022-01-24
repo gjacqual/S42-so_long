@@ -148,3 +148,5 @@ norma	:
 
 
 .PHONY	: 	all libft clean fclean re norma seleak bonus
+
+ 
