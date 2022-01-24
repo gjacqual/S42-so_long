@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:35:59 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 21:20:59 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 08:07:17 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ int	step_conditions(t_game *game, int y_pos, int x_pos)
 	step_pos = &game->map[y_pos][x_pos];
 	if (*step_pos == WALL_EL)
 		return (0);
+	if (*step_pos == ENEMY_EL)
+	{
+		game->died = 1;
+		game->the_end = 1;
+		return (0);
+	}
 	if (*step_pos == EXIT_EL)
 	{
 		if (game->collect != game->elements.coin_el)
