@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 03:21:50 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 06:12:37 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 /* Images Bonus paths */
 # define IMGSIZE 45
-# define FRAME_RATE 4
+# define FRAME_RATE 2
 # define IMGPATH "./images_bonus/"
 # define GRASS "grass.xpm"
 # define ROCK "tree.xpm"
@@ -46,13 +46,18 @@
 # define COLLECT5 "coin5.xpm"
 # define COLLECT6 "coin6.xpm"
 
+/* Enemy Images */
+# define ENEMY1 "skel01.xpm"
+# define ENEMY2 "skel02.xpm"
+# define ENEMY3 "skel03.xpm"
+# define ENEMY4 "skel04.xpm"
 
 /* Mover counter */
 # define MOVES_TEXT "MOVES COUNT: "
 # define IF_WIN_TEXT "*** You Win! ***"
 # define IF_LOSE_TEXT "*** You Lost! ***"
-# define COUNTER_COLOR 0xFFEA00
-# define RESULT_COLOR 0xF6FF04
+# define COUNTER_COLOR 0xFFFFFF
+# define RESULT_COLOR 0xFF00000
 /* Valid map symbols */
 # define EMPTY_EL '0'
 # define WALL_EL '1'
@@ -84,6 +89,7 @@ typedef struct s_data {
 	int		coin_el;
 	int		player;
 	int		exit;
+	int		enemy;
 }			t_data;
 
 /* Animations */
@@ -110,11 +116,8 @@ typedef struct s_image {
 	void	*win;
 	int		img_width;
 	int		img_height;
+	t_anima	enemy;
 }			t_image;
-
-
-
-
 
 /* Player Profile */
 typedef struct s_dude {
@@ -140,6 +143,8 @@ typedef struct s_game {
 	t_dude	player;
 	int		map_begin;
 	int		map_end;
+	int		frame_count;
+	int		anim_count;
 }			t_game;
 
 /* Initialization */
