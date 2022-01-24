@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 22:33:07 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 06:14:04 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:35:48 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	check_necessary_el(t_game *game)
 }
 
 static void	check_elements(t_game *game, int tmp_height, int tmp_width)
-{
+{	
 	if (game->map[tmp_height][tmp_width] == EMPTY_EL)
 		game->elements.empty_el++;
 	else if (game->map[tmp_height][tmp_width] == WALL_EL)
@@ -45,7 +45,7 @@ static void	check_elements(t_game *game, int tmp_height, int tmp_width)
 	else if (game->map[tmp_height][tmp_width] == EXIT_EL)
 		game->elements.exit++;
 	else if (game->map[tmp_height][tmp_width] == ENEMY_EL)
-		game->elements.enemy++;
+		add_enemy_coo(game, tmp_height, tmp_width);
 	else if (game->map[tmp_height][tmp_width] != '\n')
 		game_free_and_error("Invalid element found in the map", game);
 }

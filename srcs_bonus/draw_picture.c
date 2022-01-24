@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:33:15 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 10:29:05 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:05:20 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	speed_manage(t_game *game)
 	{	
 		game->frame_count = 0;
 		game->anim_count++;
-		game->skelet.wait--;
+		game->skelet.wait++;
 	}
 	if (game->anim_count == 6)
 		game->anim_count = 1;
 
-	if (game->skelet.wait == 0)
-		game->skelet.wait = 4;
+	if (game->skelet.wait == 4)
+		game->skelet.wait = 1;
 }
 
 int	next_pict(t_game *game)
@@ -62,5 +62,7 @@ int	next_pict(t_game *game)
 	symb_to_img(game);
 	string_on_win(game);
 	speed_manage(game);
+	if (game->passed != 1 && game->died != 1)
+		enemy_move(game);
 	return (0);
 }

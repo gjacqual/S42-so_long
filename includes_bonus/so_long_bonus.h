@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 13:41:47 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:37:55 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 /* Images Bonus paths */
 # define IMGSIZE 45
-# define FRAME_RATE 10
+# define FRAME_RATE 5
 # define IMGPATH "./images_bonus/"
 # define GRASS "grass.xpm"
 # define ROCK "tree.xpm"
@@ -197,5 +197,7 @@ int		close_window(t_game *game);
 void	winner(t_game *game);
 
 void	add_enemy_coo(t_game *game, int tmp_height, int tmp_width);
+void	enemy_move(t_game	*game);
+void	enemy_list_free(t_game *game);
 
 #endif

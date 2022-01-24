@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 00:59:58 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 01:24:23 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:59:09 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	int	x_pos;
-	int	y_pos;
-
-	x_pos = game->player_x_pos;
-	y_pos = game->player_y_pos;
 	if (keycode == ESC || keycode == UP || keycode == DOWN \
 	|| keycode == LEFT || keycode == RIGHT)
 	{

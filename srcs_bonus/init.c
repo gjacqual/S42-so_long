@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 18:32:56 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:24:31 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_list_enemy(t_game	*game)
 		system_error("Memory allocation error");
 	game->en_coord->x_pos = 0;
 	game->en_coord->y_pos = 0;
+	game->en_coord->orient = 1;
 	game->en_coord->next = NULL;
 }
 
@@ -53,6 +54,7 @@ void	init_game_vars(t_game	*game)
 	game->anim_count = 1;
 	game->skelet.wait = 0;
 	game->en_coord = NULL;
+	game->skelet.wait = 1;
 
 	init_list_enemy(game);
 
