@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 21:24:31 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:05:33 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,7 @@ void	init_game_vars(t_game	*game)
 	game->skelet.wait = 0;
 	game->en_coord = NULL;
 	game->skelet.wait = 1;
-
 	init_list_enemy(game);
-
 }
 
 /* The game starts In this function */

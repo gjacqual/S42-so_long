@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:33:15 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 22:05:20 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:04:48 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	speed_manage(t_game *game)
 	}
 	if (game->anim_count == 6)
 		game->anim_count = 1;
-
 	if (game->skelet.wait == 4)
 		game->skelet.wait = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 00:07:41 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 22:52:21 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:02:23 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	add_enemy_elem(t_game	*game, int tmp_height, int tmp_width)
 {
-
 	mlx_put_image_to_window(game->mlx, game->mlx_win, \
 				game->img.enemy.img01, IMGSIZE * tmp_width, \
 				IMGSIZE * tmp_height);

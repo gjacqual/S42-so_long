@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:54:56 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 22:58:11 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:03:42 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	enemy_list_free(t_game *game)
 	t_list	*tmp;
 
 	lst = game->en_coord;
-
 	while (lst != NULL)
 	{
 		if (lst->next)
@@ -33,7 +32,6 @@ void	enemy_list_free(t_game *game)
 	}
 	game->en_coord = NULL;
 }
-
 
 void	add_enemy_coo(t_game *game, int tmp_height, int tmp_width)
 {
@@ -50,7 +48,6 @@ void	add_enemy_coo(t_game *game, int tmp_height, int tmp_width)
 	tmp->orient = 1;
 	tmp->next = head;
 	game->en_coord = tmp;
-
 }
 
 int	enemy_step_conditions(t_game *game, int y_pos, int x_pos, t_list	*lst)
@@ -64,7 +61,6 @@ int	enemy_step_conditions(t_game *game, int y_pos, int x_pos, t_list	*lst)
 		step_pos = &game->map[y_pos][x_pos + 1];
 	if (lst->orient == -1)
 		step_pos = &game->map[y_pos][x_pos - 1];
-
 	if (*step_pos == WALL_EL || *step_pos == EXIT_EL \
 	|| *step_pos == COIN_EL || *step_pos == ENEMY_EL)
 	{
@@ -95,7 +91,6 @@ void	enemy_steps(t_game *game, int y_pos, int x_pos, t_list	*lst)
 		*cur_pos = EMPTY_EL;
 		*step_pos = ENEMY_EL;
 		game->map[y_pos][x_pos] = *cur_pos;
-
 		if (lst->orient == 1)
 			lst->x_pos = x_pos + 1;
 		if (lst->orient == -1)

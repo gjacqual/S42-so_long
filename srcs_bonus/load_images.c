@@ -6,12 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:23:04 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 08:21:53 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:06:34 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
 
 static void	load_enemy_images(t_game *game)
 {
@@ -48,8 +47,6 @@ static void	load_coin_images(t_game	*game)
 		system_error("Loading coins images failed. Check the folder");
 }
 
-
-
 static void	load_player_images(t_game	*game)
 {
 	game->img.player = mlx_xpm_file_to_image(\
@@ -63,7 +60,8 @@ static void	load_player_images(t_game	*game)
 	game->img.win = mlx_xpm_file_to_image(\
 	game->mlx, IMGPATH PLAYER_WIN, &game->img.img_width, &game->img.img_height);
 	game->img.died = mlx_xpm_file_to_image(\
-	game->mlx, IMGPATH PLAYER_DIED, &game->img.img_width, &game->img.img_height);
+	game->mlx, IMGPATH PLAYER_DIED, &game->img.img_width, \
+	&game->img.img_height);
 	if (!game->img.player || !game->img.player_up \
 	|| !game->img.player_le || !game->img.player_ri || !game->img.win \
 	|| !game->img.died)

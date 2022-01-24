@@ -6,13 +6,11 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:33:16 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 06:06:33 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:04:11 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-
 
 /* Allowed symbols in the game */
 static int	valid_chars(char c)

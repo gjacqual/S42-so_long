@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 22:52:58 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 23:01:40 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@
 # define M_LEFT 0
 # define M_RIGHT 2
 
-
 typedef struct s_list
 {
 	int				x_pos;
@@ -91,7 +90,6 @@ typedef struct s_list
 	int				orient;
 	struct s_list	*next;
 }	t_list;
-
 
 /* map elements */
 typedef struct s_data {
@@ -108,7 +106,6 @@ typedef struct s_skelet {
 	int		face;
 	int		wait;
 }			t_skelet;
-
 
 /* Animations */
 typedef struct s_anima {
