@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 10:09:56 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 13:41:47 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,16 @@
 # define M_LEFT 0
 # define M_RIGHT 2
 
+
+typedef struct s_list
+{
+	int				x_pos;
+	int				y_pos;
+	int				orient;
+	struct s_list	*next;
+}	t_list;
+
+
 /* map elements */
 typedef struct s_data {
 	int		empty_el;
@@ -150,6 +160,7 @@ typedef struct s_game {
 	int			frame_count;
 	int			anim_count;
 	t_skelet	skelet;
+	t_list		*en_coord;
 }			t_game;
 
 /* Initialization */
@@ -184,5 +195,7 @@ void	player_look_and_move(int keycode, t_game *game);
 /* Free and close */
 int		close_window(t_game *game);
 void	winner(t_game *game);
+
+void	add_enemy_coo(t_game *game, int tmp_height, int tmp_width);
 
 #endif
