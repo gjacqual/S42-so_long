@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:34:26 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/22 06:43:28 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 03:17:46 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,20 @@ void	game_free_and_error(char *message, t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map[i])
+	if (game->map)
 	{
-		free(game->map[i]);
-		i++;
+		if (game->map[i])
+		{
+			while (game->map[i])
+			{
+				free(game->map[i]);
+				i++;
+			}
+		}
+		free(game->map);
 	}
-	free(game->map);
+	if (game->mlx_win)
+		mlx_destroy_window(game->mlx, game->mlx_win);
 	ft_putendl_fd("\033[1;31mError\033[0m", 2);
 	ft_putstr_fd("\033[31m>>>", 2);
 	ft_putstr_fd(message, 2);

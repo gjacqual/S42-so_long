@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:23:04 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 01:21:54 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 03:24:03 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,8 @@ void	load_images(t_game	*game)
 	game->mlx, IMGPATH PLAYER, &game->img.img_width, &game->img.img_height);
 	game->img.win = mlx_xpm_file_to_image(\
 	game->mlx, IMGPATH PLAYER_WIN, &game->img.img_width, &game->img.img_height);
+	if (!game->img.grass || !game->img.rock \
+	|| !game->img.exit || !game->img.exit_cl \
+	|| !game->img.orb || !game->img.player || !game->img.win)
+		system_error("Loading images failed. Check the folder");
 }

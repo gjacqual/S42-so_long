@@ -6,11 +6,33 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 03:23:04 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 23:40:00 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 03:08:21 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+
+static void	load_coin_images(t_game	*game)
+{
+	game->img.orb.img01 = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH COLLECT1, &game->img.img_width, &game->img.img_height);
+	game->img.orb.img02 = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH COLLECT2, &game->img.img_width, &game->img.img_height);
+	game->img.orb.img03 = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH COLLECT3, &game->img.img_width, &game->img.img_height);
+	game->img.orb.img04 = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH COLLECT4, &game->img.img_width, &game->img.img_height);
+	game->img.orb.img05 = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH COLLECT5, &game->img.img_width, &game->img.img_height);
+	game->img.orb.img06 = mlx_xpm_file_to_image(\
+	game->mlx, IMGPATH COLLECT6, &game->img.img_width, &game->img.img_height);
+	if (!game->img.orb.img01 || !game->img.orb.img02 \
+	|| !game->img.orb.img03 || !game->img.orb.img04 \
+	|| !game->img.orb.img05 || !game->img.orb.img06)
+		system_error("Loading images failed. Check the folder");
+}
+
 
 
 static void	load_player_images(t_game	*game)
@@ -25,13 +47,16 @@ static void	load_player_images(t_game	*game)
 	game->mlx, IMGPATH PLAYER_R, &game->img.img_width, &game->img.img_height);
 	game->img.win = mlx_xpm_file_to_image(\
 	game->mlx, IMGPATH PLAYER_WIN, &game->img.img_width, &game->img.img_height);
+	if (!game->img.player || !game->img.player_up \
+	|| !game->img.player_le || !game->img.player_ri || !game->img.win)
+		system_error("Loading images failed. Check the folder");
 }
-
 
 /* Upload all images to the game */
 void	load_images(t_game	*game)
 {
 	load_player_images(game);
+	load_coin_images(game);
 	game->img.grass = mlx_xpm_file_to_image(\
 	game->mlx, IMGPATH GRASS, &game->img.img_width, &game->img.img_height);
 	game->img.rock = mlx_xpm_file_to_image(\
@@ -40,9 +65,7 @@ void	load_images(t_game	*game)
 	game->mlx, IMGPATH EXIT, &game->img.img_width, &game->img.img_height);
 	game->img.exit_cl = mlx_xpm_file_to_image(\
 	game->mlx, IMGPATH EXIT_CL, &game->img.img_width, &game->img.img_height);
-	game->img.orb = mlx_xpm_file_to_image(\
-	game->mlx, IMGPATH COLLECT, &game->img.img_width, &game->img.img_height);
+	if (!game->img.grass || !game->img.rock \
+	|| !game->img.exit || !game->img.exit_cl)
+		system_error("Loading images failed. Check the folder");
 }
-
-
-
