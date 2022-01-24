@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 00:25:30 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 10:10:40 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:32:56 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ void	xwindow_init(t_game	*game)
 		IMGSIZE * game->map_width, IMGSIZE * game->map_height, "So_Long_Bonus");
 	if (game->mlx_win == NULL)
 		game_error("Window initialization failed");
+}
+
+void	init_list_enemy(t_game	*game)
+{
+	game->en_coord = (t_list *)malloc(sizeof(*game->en_coord));
+	if (!game->en_coord)
+		system_error("Memory allocation error");
+	game->en_coord->x_pos = 0;
+	game->en_coord->y_pos = 0;
+	game->en_coord->next = NULL;
 }
 
 void	init_game_vars(t_game	*game)
@@ -42,6 +52,10 @@ void	init_game_vars(t_game	*game)
 	game->frame_count = 0;
 	game->anim_count = 1;
 	game->skelet.wait = 0;
+	game->en_coord = NULL;
+
+	init_list_enemy(game);
+
 }
 
 /* The game starts In this function */
