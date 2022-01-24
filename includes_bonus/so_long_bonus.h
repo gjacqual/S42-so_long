@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 06:47:03 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/24 10:09:56 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 /* Images Bonus paths */
 # define IMGSIZE 45
-# define FRAME_RATE 2
+# define FRAME_RATE 10
 # define IMGPATH "./images_bonus/"
 # define GRASS "grass.xpm"
 # define ROCK "tree.xpm"
@@ -37,6 +37,7 @@
 # define PLAYER_R "player_right.xpm"
 # define ENEMY "skelet.xpm"
 # define PLAYER_WIN "winner.xpm"
+# define PLAYER_DIED "died.xpm"
 
 /* Coin images */
 # define COLLECT1 "coin1.xpm"
@@ -55,7 +56,7 @@
 /* Mover counter */
 # define MOVES_TEXT "MOVES COUNT: "
 # define IF_WIN_TEXT "*** You Win! ***"
-# define IF_LOSE_TEXT "*** You Lost! ***"
+# define IF_LOSE_TEXT "*** You lose! ***"
 # define COUNTER_COLOR 0xFFFFFF
 # define RESULT_COLOR 0xFF00000
 /* Valid map symbols */
@@ -95,8 +96,7 @@ typedef struct s_data {
 /* Enemy Profile */
 typedef struct s_skelet {
 	int		face;
-	int		enemy_x_pos;
-	int		enemy_y_pos;
+	int		wait;
 }			t_skelet;
 
 
@@ -117,7 +117,6 @@ typedef struct s_image {
 	void		*exit;
 	void		*exit_cl;
 	t_anima		orb;
-	t_skelet	skelet;
 	void		*player;
 	void		*player_up;
 	void		*player_le;
@@ -126,29 +125,31 @@ typedef struct s_image {
 	int			img_width;
 	int			img_height;
 	t_anima		enemy;
+	void		*died;
 }			t_image;
 
 /* Game structure */
 typedef struct s_game {
-	void	*mlx;
-	void	*mlx_win;
-	int		map_height;
-	int		map_width;
-	char	**map;
-	int		moves;
-	int		collect;
-	int		player_x_pos;
-	int		player_y_pos;
-	int		passed;
-	int		died;
-	int		the_end;
-	t_image	img;
-	t_data	elements;
-	int		player_face;
-	int		map_begin;
-	int		map_end;
-	int		frame_count;
-	int		anim_count;
+	void		*mlx;
+	void		*mlx_win;
+	int			map_height;
+	int			map_width;
+	char		**map;
+	int			moves;
+	int			collect;
+	int			player_x_pos;
+	int			player_y_pos;
+	int			passed;
+	int			died;
+	int			the_end;
+	t_image		img;
+	t_data		elements;
+	int			player_face;
+	int			map_begin;
+	int			map_end;
+	int			frame_count;
+	int			anim_count;
+	t_skelet	skelet;
 }			t_game;
 
 /* Initialization */
