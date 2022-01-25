@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   map_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 20:47:00 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/25 05:47:49 by gjacqual         ###   ########.fr       */
+/*   Created: 2022/01/25 04:00:52 by gjacqual          #+#    #+#             */
+/*   Updated: 2022/01/25 05:30:17 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	close_window(t_game *game)
+/* Clears the memory allocated for lines with map symbols */
+void	map_free(t_game *game)
 {
-	if (game->map != NULL)
-		map_free(game);
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx, game->mlx_win);
-	exit(EXIT_SUCCESS);
+	int	tmp_height;
+	int	i;
+
+	i = 0;
+	tmp_height = game->map_height;
+	while (i < tmp_height)
+	{
+		free(game->map[i++]);
+	}
+	free(game->map);
 }

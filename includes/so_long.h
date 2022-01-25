@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 07:23:02 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/25 05:33:33 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	player_steps(t_game *game, int y_pos, int x_pos);
 
 /* Free and close */
 int		close_window(t_game *game);
+void	map_free(t_game *game);
 void	winner(t_game *game);
 
 #endif

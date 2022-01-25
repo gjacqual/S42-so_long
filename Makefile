@@ -50,6 +50,7 @@ SRCS	=	./srcs/so_long.c\
 			./srcs/draw_picture.c\
 			./srcs/init.c\
 			./srcs/close_window.c\
+			./srcs_bonus/map_free.c\
 			./srcs/get_next_line/get_next_line.c\
 			./srcs/get_next_line/get_next_line_utils.c
 
@@ -71,6 +72,7 @@ SRCS_B	=	./srcs_bonus/so_long.c\
 			./srcs_bonus/enemy_map.c\
 			./srcs_bonus/add_coin_element.c\
 			./srcs_bonus/add_player_element.c\
+			./srcs_bonus/map_free.c\
 			./srcs_bonus/get_next_line_bonus/get_next_line.c\
 			./srcs_bonus/get_next_line_bonus/get_next_line_utils.c
 
@@ -140,7 +142,10 @@ re_bonus	:	fclean bonus
 seleak	:
 			@valgrind --leak-check=full --track-origins=yes ./so_long  maps/map1.ber
 
-seleakf	:
+seleakb	:
+			@valgrind --leak-check=full --track-origins=yes ./so_long maps_bonus/map1_bonus.ber
+
+seleakfull	:
 			@valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=med --track-origins=yes ./so_long maps_bonus/map1_bonus.ber
 
 norma	:

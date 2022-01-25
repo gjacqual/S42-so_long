@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 03:48:02 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/24 23:01:40 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/25 04:20:52 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ void	player_look_and_move(int keycode, t_game *game);
 
 /* Free and close */
 int		close_window(t_game *game);
+void	map_free(t_game *game);
 void	winner(t_game *game);
 
 void	add_enemy_coo(t_game *game, int tmp_height, int tmp_width);
