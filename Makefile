@@ -3,7 +3,7 @@ NAME		:=	so_long
 
 # Compilation Parameters
 CC 			:=	clang
-CFLAGS		:=	-Wall -Wextra -Werror -MMD -g -O2
+CFLAGS		:=	-Wall -Wextra -Werror -MMD -O2
 RM			=	rm -f
 
 # Libraries

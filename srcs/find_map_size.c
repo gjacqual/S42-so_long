@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 19:33:16 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/01/23 00:42:39 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/25 06:24:17 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_diff_map_obj(char *path)
 		if (r_size == -1)
 			game_error("File reading error");
 		if (!valid_chars(buf) && (buf != '\n'))
-			game_error("Invalid symbol found in the file.");
+			game_error("Invalid symbol found in the file or is empty");
 		if (r_size == 0)
 			break ;
 	}
